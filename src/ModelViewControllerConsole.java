@@ -5,6 +5,7 @@ public class ModelViewControllerConsole {
 
 	public static void main(String[] args) throws Exception {
 		// Connect to database
+                System.out.println("deneme12");
 		connectToDatabase();
                 		
 		// Model View Controller (MVC)
