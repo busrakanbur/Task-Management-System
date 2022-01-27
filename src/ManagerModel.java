@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.util.List;
 import java.util.Map;
 
-
 /**
  *
  * @author nolen
@@ -80,10 +79,7 @@ public class ManagerModel implements ModelInterface {
 		}
 		
 		return rowCount;
-	}
-        
-        
-        
+	}      
 	
 	@Override
 	public int update(Map<String,Object> updateParameters, Map<String,Object> whereParameters) throws Exception
@@ -135,7 +131,6 @@ public class ManagerModel implements ModelInterface {
 		return rowCount;
 	}
         
-        
         @Override
 	public int signup(String fieldNames, List<Object> rows) throws Exception
 	{
@@ -151,12 +146,12 @@ public class ManagerModel implements ModelInterface {
 			if (rows.get(i) instanceof UserAccount) {
 				rowCount++;
 				
-				UserAccount department = (UserAccount)rows.get(i); 
+				UserAccount userAccount = (UserAccount)rows.get(i); 
 	
 				sql.append("(");
 				for (int j=0; j<fieldList.length; j++) {
 					String fieldName = fieldList[j].trim();
-					sql.append(DatabaseUtilities.formatField(department.getByName(fieldName)));
+					sql.append(DatabaseUtilities.formatField(userAccount.getByName(fieldName)));
 					if (j < fieldList.length - 1) {
 						sql.append(", ");
 					}
@@ -183,15 +178,13 @@ public class ManagerModel implements ModelInterface {
 	}
         
         @Override //BU TAMAMEN DEĞİŞMELİ
-	public int signin() throws Exception
+	public boolean signin(Map<String, Object> whereParameters) throws Exception
 	{
 			
 		int rowCount = 1;
 		
-		return rowCount;
-	}
-        
-        
+		return false;
+	}       
 
 	@Override
 	public String toString() {

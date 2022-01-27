@@ -30,9 +30,8 @@ public class NopModel implements ModelInterface {
 		return 0;
 	}
         
-        @Override
-	public int signin() throws Exception {
-		return 0;
+        public boolean signin(Map<String, Object> whereParameters) throws Exception {
+		return false;
 	}
         
 	@Override

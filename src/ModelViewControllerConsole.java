@@ -13,8 +13,8 @@ public class ModelViewControllerConsole {
         router.put("MainMenu", new Controller(new MainMenuView(), new NopModel()));
         router.put("UserAccount", new Controller(new UserAccountView(), new UserAccountModel()));
 
-//main menu çağırıldıktan sonra, mainmenuview kısmında useraccount çağırılıyor!!!!!!!
-//return new ViewData("UserAccount", operationName, new HashMap<>()); şeklinde
+        //main menu çağırıldıktan sonra, mainmenuview kısmında useraccount çağırılıyor!!!!!!!
+        //return new ViewData("UserAccount", operationName, new HashMap<>()); şeklinde
         router.put("ManagerLoginMenu", new Controller(new ManagerLoginMenuView(), new NopModel()));
         router.put("Manager", new Controller(new ManagerView(), new ManagerModel()));
 
@@ -30,28 +30,7 @@ public class ModelViewControllerConsole {
             System.out.println();
             System.out.println("-------------------------------------------------");
             System.out.println();
-
-            if (viewData.functionName == "signup.gui") {
-                do {
-                    // Model, View, and Controller
-                    Controller controller2 = router.get(viewData2.functionName);
-                    ModelData modelData2 = controller2.executeModel(viewData2);
-                    viewData2 = controller2.getView(modelData2, viewData2.functionName, viewData2.operationName);
-
-                    System.out.println();
-                    System.out.println("-------------------------------------------------");
-                    System.out.println();
-                } while (viewData2.functionName != null); 
-            }
-            
-            
-            
-            
-            
-            else if(viewData.functionName == "select"){
-                System.out.println("selecet çalıştı");
-            }
-
+        
         } while (viewData.functionName != null); //8 quit
 
         /*
@@ -109,7 +88,7 @@ public class ModelViewControllerConsole {
     }
 
     public static void connectToDatabase() {
-        DatabaseUtilities.host = "localhost:49669";
+        DatabaseUtilities.host = "localhost:49670";
         DatabaseUtilities.databaseName = "Project2";
 
         try {

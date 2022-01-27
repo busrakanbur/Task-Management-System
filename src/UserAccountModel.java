@@ -30,7 +30,7 @@ class UserAccountModel implements ModelInterface {
 	@Override
 	public int insert(String fieldNames, List<Object> rows) throws Exception
 	{
-		// construct SQL statement
+                // construct SQL statement
 		StringBuilder sql = new StringBuilder();
 		sql.append(" INSERT INTO dbo.UserAccount (" + fieldNames + ") " );
 		sql.append(" VALUES ");
@@ -60,9 +60,8 @@ class UserAccountModel implements ModelInterface {
 			}
 		}		
 		//System.out.println(sql.toString());
-		
-		
-		// execute constructed SQL statement
+
+                // execute constructed SQL statement
 		if (rowCount > 0) {
 			Connection connection = DatabaseUtilities.getConnection();
 			PreparedStatement preparedStatement = connection.prepareStatement(sql.toString());
@@ -73,10 +72,7 @@ class UserAccountModel implements ModelInterface {
 		return rowCount;
 	}
         
-        
-        
-	
-	@Override
+        @Override
 	public int update(Map<String,Object> updateParameters, Map<String,Object> whereParameters) throws Exception
 	{
 		// construct SQL statement
@@ -126,7 +122,6 @@ class UserAccountModel implements ModelInterface {
 		return rowCount;
 	}
         
-        
         @Override
 	public int signup(String fieldNames, List<Object> rows) throws Exception
 	{
@@ -142,12 +137,12 @@ class UserAccountModel implements ModelInterface {
 			if (rows.get(i) instanceof UserAccount) {
 				rowCount++;
 				
-				UserAccount department = (UserAccount)rows.get(i); 
+				UserAccount userAccount = (UserAccount)rows.get(i); 
 	
 				sql.append("(");
 				for (int j=0; j<fieldList.length; j++) {
 					String fieldName = fieldList[j].trim();
-					sql.append(DatabaseUtilities.formatField(department.getByName(fieldName)));
+					sql.append(DatabaseUtilities.formatField(userAccount.getByName(fieldName)));
 					if (j < fieldList.length - 1) {
 						sql.append(", ");
 					}
@@ -174,15 +169,28 @@ class UserAccountModel implements ModelInterface {
 	}
         
         @Override //BU TAMAMEN DEĞİŞMELİ
-	public int signin() throws Exception
+	public boolean signin(Map<String, Object> whereParameters) throws Exception
 	{		
-		int rowCount = 1;
+		// construct SQL statement
+		StringBuilder sql = new StringBuilder();
+		sql.append(" SELECT ");
+		sql.append("	username, password");
+		sql.append(" FROM dbo.UserAccount ");
+
+		List<Map.Entry<String, Object>> whereParameterList = DatabaseUtilities.createWhereParameterList(whereParameters);		
+		sql.append(DatabaseUtilities.prepareWhereStatement(whereParameterList));
 		
+		//sql.append("ORDER BY user_account_id");		
+		//System.out.println(sql.toString() + "\n");
 		
-		return rowCount;
-	}
-        
-        
+		// execute constructed SQL statement
+		Connection connection = DatabaseUtilities.getConnection();
+		PreparedStatement preparedStatement = connection.prepareStatement(sql.toString());
+		DatabaseUtilities.setWhereStatementParameters(preparedStatement, whereParameterList);
+		ResultSet result = preparedStatement.executeQuery();
+                
+                return false;
+	}      
 
 	@Override
 	public String toString() {

@@ -31,39 +31,31 @@ public class Employee extends UserAccount{
         this.employee_name = employee_name;
     }
 
-    public short getEmployee_id() {
-        return employee_id;
-    }
+    public short getEmployee_id() { return employee_id; }
 
-    public void setEmployee_id(short employee_id) {
-        this.employee_id = employee_id;
-    }
+    public void setEmployee_id(short employee_id) { this.employee_id = employee_id; }
 
-    public short getEmployee_code() {
-        return employee_code;
-    }
+    public short getEmployee_code() { return employee_code; }
 
-    public void setEmployee_code(short employee_code) {
-        this.employee_code = employee_code;
-    }
+    public void setEmployee_code(short employee_code) { this.employee_code = employee_code; }
 
-    public String getEmployee_name() {
-        return employee_name;
-    }
+    public String getEmployee_name() { return employee_name; }
 
-    public void setEmployee_name(String employee_name) {
-        this.employee_name = employee_name;
-    }
+    public void setEmployee_name(String employee_name) { this.employee_name = employee_name; }
 
+    @Override
+    public Object getByName(String attributeName) {
+        switch (attributeName) {
+            case "employee_id": return employee_id;
+            case "employee_code": return employee_code;
+            case "employee_name": return employee_name;
+            default: return null;
+	}
+    }   
+    
     @Override
     public String toString() {
         return "Employee{" + "employee_id=" + employee_id + ", employee_code=" + employee_code + ", employee_name=" + employee_name + '}';
-    }
-    
-    
-    
-    
-    
-    
+    }     
     
 }

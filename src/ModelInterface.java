@@ -14,7 +14,7 @@ import java.util.*;
         
         abstract int signup(String fieldNames, List<Object> rows) throws Exception;
         
-        abstract int signin() throws Exception;
+        abstract boolean signin(Map<String, Object> whereParameters) throws Exception;
 	
 	default ModelData execute(ViewData viewData) throws Exception {
 		if (viewData.viewParameters == null) {
@@ -67,11 +67,7 @@ import java.util.*;
 			}
                         case "signin":
 			{
-				Map<String, Object> whereParameters = (Map<String, Object>)(viewData.viewParameters.get("whereParameters"));
-				
-				int recordCount = delete(whereParameters);
-				
-				return new ModelData(viewData.functionName, recordCount);
+				return new ModelData(viewData.functionName, 1);
 			}
 		}
 		
