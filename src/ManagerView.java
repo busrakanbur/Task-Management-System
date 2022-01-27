@@ -6,9 +6,13 @@ import java.util.List;
 import java.util.Map;
 
 
-class UserAccountView implements ViewInterface {
-
-	@Override
+/**
+ *
+ * @author nolen
+ */
+public class ManagerView implements ViewInterface {
+    
+    @Override
 	public ViewData create(ModelData modelData, String functionName, String operationName) throws Exception {
 		
 		switch(operationName) {
@@ -27,7 +31,7 @@ class UserAccountView implements ViewInterface {
                 case "sigin.gui": return signinGUI(modelData);
 		}
 		
-		return new ViewData("MainMenu", "");
+		return new ViewData("ManagerLoginMenuView", "");
 	}
 	
 	ViewData selectOperation(ModelData modelData) throws Exception {
@@ -57,32 +61,32 @@ class UserAccountView implements ViewInterface {
 			resultSet.close();	
 		}
 		
-		return new ViewData("MainMenu", "");
+		return new ViewData("ManagerLoginMenu", "");
 	}
 	
 	ViewData insertOperation(ModelData modelData) throws Exception {
 		System.out.println("Number of inserted rows is " + modelData.recordCount);
 		
-		return new ViewData("MainMenu", "");
+		return new ViewData("ManagerLoginMenu", "");
 	}
         
 
 	ViewData updateOperation(ModelData modelData) throws Exception {
 		System.out.println("Number of updated rows is " + modelData.recordCount);
 		
-		return new ViewData("MainMenu", "");
+		return new ViewData("ManagerLoginMenu", "");
 	}
 	
 	ViewData deleteOperation(ModelData modelData) throws Exception {
 		System.out.println("Number of deleted rows is " + modelData.recordCount);
 		
-		return new ViewData("MainMenu", "");
+		return new ViewData("ManagerLoginMenu", "");
 	}	
 	
         ViewData signupOperation(ModelData modelData) throws Exception {
 		System.out.println("Number of sign up operation is " + modelData.recordCount);
 		
-		return new ViewData("ManagerLoginMenu", ""); //denemek için böyle yaptım, bu kısım sigin'de çalışmıyor çünkü fonksiyonu yazamadım.
+		return new ViewData("ManagerLoginMenu", "");
 	}
         
         ViewData signinOperation(ModelData modelData) throws Exception {
@@ -131,7 +135,7 @@ class UserAccountView implements ViewInterface {
 		Map<String, Object> parameters = new HashMap<>();
 		parameters.put("whereParameters", getWhereParameters());
 		
-		return new ViewData("UserAccount", "select", parameters);
+		return new ViewData("Manager", "select", parameters);
 	}
 
 	ViewData insertGUI(ModelData modelData) throws Exception {
@@ -162,7 +166,7 @@ class UserAccountView implements ViewInterface {
                 
                 parameters.put("rows", rows);
 		
-		return new ViewData("UserAccount", "insert", parameters);
+		return new ViewData("Manager", "insert", parameters);
 	}
 
 	ViewData updateGUI(ModelData modelData) throws Exception {
@@ -185,23 +189,22 @@ class UserAccountView implements ViewInterface {
 		parameters.put("updateParameters", updateParameters);
 		parameters.put("whereParameters", getWhereParameters());
 		
-		return new ViewData("UserAccount", "update", parameters);
+		return new ViewData("Manager", "update", parameters);
 	}
         
         ViewData signinGUI(ModelData modelData) throws Exception {
-            
-                System.out.println("lütfen giriş bilgilerinizi yazınız...");
-		String username = getString("username : ", true);
-                String password = getString("password : ", true);
-            
-		return new ViewData("UserAccount", "signin");
+                
+		Map<String, Object> parameters = new HashMap<>();
+		parameters.put("whereParameters", getWhereParameters());
+		
+		return new ViewData("Manager", "signin", parameters);
 	}
 
 	ViewData deleteGUI(ModelData modelData) throws Exception {
 		Map<String, Object> parameters = new HashMap<>();
 		parameters.put("whereParameters", getWhereParameters());
 		
-		return new ViewData("UserAccount", "delete", parameters);
+		return new ViewData("Manager", "delete", parameters);
 	}
         
         
@@ -233,11 +236,12 @@ class UserAccountView implements ViewInterface {
                 
                 parameters.put("rows", rows);
 		
-		return new ViewData("UserAccount", "signup", parameters);
+		return new ViewData("Manager", "signup", parameters);
 	}
 
 	@Override
 	public String toString() {
-		return "User Account View";
-	}		
+		return "Manager View";
+	}
+    
 }

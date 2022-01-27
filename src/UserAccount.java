@@ -1,9 +1,8 @@
 
-
 import java.util.Date;
 
 
-class UserAccount {
+abstract class UserAccount {
     
     private short user_account_id;
     private String username;

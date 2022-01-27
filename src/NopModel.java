@@ -1,3 +1,5 @@
+
+
 import java.sql.ResultSet;
 import java.util.List;
 import java.util.Map;
@@ -29,7 +31,7 @@ public class NopModel implements ModelInterface {
 	}
         
         @Override
-	public int signin(Map<String, Object> whereParameters) throws Exception {
+	public int signin() throws Exception {
 		return 0;
 	}
         

@@ -1,9 +1,18 @@
-import java.sql.*;
-import java.util.*;
 
-class UserAccountModel implements ModelInterface {
-	
-	@Override
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.List;
+import java.util.Map;
+
+
+/**
+ *
+ * @author nolen
+ */
+public class ManagerModel implements ModelInterface {
+    
+    @Override
 	public ResultSet select(Map<String, Object> whereParameters) throws Exception {
 		// construct SQL statement
 		StringBuilder sql = new StringBuilder();
@@ -175,9 +184,9 @@ class UserAccountModel implements ModelInterface {
         
         @Override //BU TAMAMEN DEĞİŞMELİ
 	public int signin() throws Exception
-	{		
+	{
+			
 		int rowCount = 1;
-		
 		
 		return rowCount;
 	}
@@ -188,4 +197,5 @@ class UserAccountModel implements ModelInterface {
 	public String toString() {
 		return "User Account Model";
 	}
+    
 }

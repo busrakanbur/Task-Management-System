@@ -1,3 +1,4 @@
+
 import java.sql.*;
 import java.util.*;
 
@@ -13,7 +14,7 @@ import java.util.*;
         
         abstract int signup(String fieldNames, List<Object> rows) throws Exception;
         
-        abstract int signin(Map<String,Object> whereParameters) throws Exception;
+        abstract int signin() throws Exception;
 	
 	default ModelData execute(ViewData viewData) throws Exception {
 		if (viewData.viewParameters == null) {

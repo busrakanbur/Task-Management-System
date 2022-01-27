@@ -1,3 +1,4 @@
+
 import java.util.*;
 
 
@@ -5,7 +6,6 @@ public class ModelViewControllerConsole {
 
 	public static void main(String[] args) throws Exception {
 		// Connect to database
-                System.out.println("deneme12");
 		connectToDatabase();
                 		
 		// Model View Controller (MVC)
@@ -13,20 +13,102 @@ public class ModelViewControllerConsole {
 		Map<String, Controller> router = new HashMap<>();		
 		router.put("MainMenu", new Controller(new MainMenuView(), new NopModel()));
 		router.put("UserAccount", new Controller(new UserAccountView(), new UserAccountModel()));
+                
+//main menu çağırıldıktan sonra, mainmenuview kısmında useraccount çağırılıyor!!!!!!!
+//return new ViewData("UserAccount", operationName, new HashMap<>()); şeklinde
 
-		ViewData viewData = new ViewData("MainMenu", "");		
-		do {
+                router.put("ManagerLoginMenu", new Controller(new ManagerLoginMenuView(), new NopModel()));
+		router.put("Manager", new Controller(new ManagerView(), new ManagerModel()));
+
+		ViewData viewData = new ViewData("MainMenu", "");
+                ViewData viewData2 = new ViewData("ManagerLoginMenu", ""); 
+                /*
+                if(viewData.functionName == "signin"){
+                    do {
+                            // Model, View, and Controller
+                            Controller controller = router.get(viewData2.functionName);
+                            ModelData modelData = controller.executeModel(viewData2);
+                            viewData2 = controller.getView(modelData, viewData2.functionName, viewData2.operationName);
+
+                            System.out.println();
+                            System.out.println("-------------------------------------------------");
+                            System.out.println();
+                    }
+                    while (viewData2.functionName != null);
+                    }
+                else{
+                do {
+                            // Model, View, and Controller
+                            Controller controller = router.get(viewData.functionName);
+                            ModelData modelData = controller.executeModel(viewData);
+                            viewData = controller.getView(modelData, viewData.functionName, viewData.operationName);
+
+                            System.out.println();
+                            System.out.println("-------------------------------------------------");
+                            System.out.println();
+                    }
+                    while (viewData.functionName != "signin");
+                
+                do {
+                            // Model, View, and Controller
+                            Controller controller = router.get(viewData2.functionName);
+                            ModelData modelData = controller.executeModel(viewData2);
+                            viewData2 = controller.getView(modelData, viewData2.functionName, viewData2.operationName);
+
+                            System.out.println();
+                            System.out.println("-------------------------------------------------");
+                            System.out.println();
+                    }
+                    while (viewData2.functionName != null);
+                       
+                }*/
+                
+                if(viewData.functionName != "signin"){ //bu kısım çalışmıyor bile, kimse signin e bakmıyor
+                    //şu an signupta menu view değişiyor sadece
+                    
+                    do {
+                            // Model, View, and Controller
+                            Controller controller = router.get(viewData.functionName);
+                            ModelData modelData = controller.executeModel(viewData);
+                            viewData = controller.getView(modelData, viewData.functionName, viewData.operationName);
+
+                            System.out.println();
+                            System.out.println("-------------------------------------------------");
+                            System.out.println();
+                    }
+                    while (viewData.functionName != "signin"); //bu kısım hiçbir işe yaramıyor herhalde
+                    //yarıyormuş, bunu null yapınca, main menu açılıyor quit diyorum, manager menuye gidiyor orda da quit demem gerekiyor.
+                    //bir de manager menuye gidersem 7 diyip, ordan ilk denemede quitle çıkamıyorum, bir de delete her şeyi siliyor onu anlamadım
+                    
+                
+                    do {
+                            // Model, View, and Controller
+                            Controller controller = router.get(viewData2.functionName);
+                            ModelData modelData = controller.executeModel(viewData2);
+                            viewData2 = controller.getView(modelData, viewData2.functionName, viewData2.operationName);
+
+                            System.out.println();
+                            System.out.println("-------------------------------------------------");
+                            System.out.println();
+                    }
+                    while (viewData2.functionName != null);
+                    }
+                
+                else{
+                    do {
 			// Model, View, and Controller
-			Controller controller = router.get(viewData.functionName);
-			ModelData modelData = controller.executeModel(viewData);
-			viewData = controller.getView(modelData, viewData.functionName, viewData.operationName);
+			Controller controller = router.get(viewData2.functionName);
+			ModelData modelData = controller.executeModel(viewData2);
+			viewData2 = controller.getView(modelData, viewData2.functionName, viewData2.operationName);
 			
 			System.out.println();
 			System.out.println("-------------------------------------------------");
 			System.out.println();
-		}
-		while (viewData.functionName != null);
-		
+                    }
+                    while (viewData2.functionName != null);
+                    }
+                
+                
 		System.out.println();
 		System.out.println();
 		System.out.println("Program is ended...");
@@ -59,5 +141,6 @@ public class ModelViewControllerConsole {
 			return;
 		}		
 	}
+
 	
 }
