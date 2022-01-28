@@ -96,10 +96,10 @@ class UserAccountView implements ViewInterface {
                     resultSet.close();
                 }
                 
-                if(resultSet == null) {
+                /*if(resultSet == null) {
                     return new ViewData("MainMenu", "");
                     
-                }
+                }*/
                  
                 return new ViewData("ManagerLoginMenu", "");
 	}

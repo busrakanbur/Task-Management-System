@@ -169,27 +169,28 @@ class UserAccountModel implements ModelInterface {
 	}
         
         @Override //BU TAMAMEN DEĞİŞMELİ
-	public boolean signin(Map<String, Object> whereParameters) throws Exception
+	public ResultSet signin(Map<String, Object> whereParameters) throws Exception
 	{		
 		// construct SQL statement
 		StringBuilder sql = new StringBuilder();
 		sql.append(" SELECT ");
-		sql.append("	username, password");
+		sql.append("	username, password ");
 		sql.append(" FROM dbo.UserAccount ");
 
 		List<Map.Entry<String, Object>> whereParameterList = DatabaseUtilities.createWhereParameterList(whereParameters);		
 		sql.append(DatabaseUtilities.prepareWhereStatement(whereParameterList));
 		
-		//sql.append("ORDER BY user_account_id");		
+		sql.append("ORDER BY user_account_id");		
 		//System.out.println(sql.toString() + "\n");
+
 		
 		// execute constructed SQL statement
 		Connection connection = DatabaseUtilities.getConnection();
 		PreparedStatement preparedStatement = connection.prepareStatement(sql.toString());
 		DatabaseUtilities.setWhereStatementParameters(preparedStatement, whereParameterList);
 		ResultSet result = preparedStatement.executeQuery();
-                
-                return false;
+		
+		return result;
 	}      
 
 	@Override
