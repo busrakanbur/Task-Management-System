@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 
 class UserAccountView implements ViewInterface {
@@ -17,14 +18,15 @@ class UserAccountView implements ViewInterface {
 		case "insert": return insertOperation(modelData);	
 		case "update": return updateOperation(modelData);	
 		case "delete": return deleteOperation(modelData);
-                case "signup": return signupOperation(modelData);
                 case "signin": return signinOperation(modelData);
+                case "signup": return signupOperation(modelData);
+                
 		case "select.gui": return selectGUI(modelData);
 		case "insert.gui": return insertGUI(modelData);
 		case "update.gui": return updateGUI(modelData);
-		case "delete.gui": return deleteGUI(modelData);
-                case "signup.gui": return signupGUI(modelData);
+		case "delete.gui": return deleteGUI(modelData); 
                 case "signin.gui": return signinGUI(modelData);
+                case "signup.gui": return signupGUI(modelData);               
 		}
 		
 		return new ViewData("MainMenu", "");
@@ -78,12 +80,6 @@ class UserAccountView implements ViewInterface {
 		return new ViewData("MainMenu", "");
 	}	
 	
-        ViewData signupOperation(ModelData modelData) throws Exception {
-		System.out.println("Number of sign up operation is " + modelData.recordCount);
-		
-		return new ViewData("ManagerLoginMenu", ""); //denemek için böyle yaptım, bu kısım sigin'de çalışmıyor çünkü fonksiyonu yazamadım.
-	}
-        
         ViewData signinOperation(ModelData modelData) throws Exception {
 		ResultSet resultSet = modelData.resultSet;
                 String temp = null;
@@ -100,13 +96,11 @@ class UserAccountView implements ViewInterface {
 			resultSet.close();	
 		}
                 
-                System.out.print(temp + "\t");
-                
                 if(num == 1){
-                    
+                    System.out.println("\nSigning in...");
+                    TimeUnit.SECONDS.sleep(1);
                     if (temp.equals("n")) {
-                        System.out.println("employeyeeuyeyeyye");
-                        return new ViewData("MainMenu", "");
+                        return new ViewData("EmployeeLoginMenu", "");
                     }
                     else {
                         return new ViewData("ManagerLoginMenu", "");
@@ -116,7 +110,12 @@ class UserAccountView implements ViewInterface {
                     System.out.println("Something is wrong. Try again.");
                     return new ViewData("MainMenu", "");
                 }                
+	}
+        
+        ViewData signupOperation(ModelData modelData) throws Exception {
+		System.out.println("Number of sign up operation is " + modelData.recordCount);
 		
+		return new ViewData("MainMenu", "");
 	}
         
         Map<String, Object> getWhereParameters() throws Exception {
@@ -142,9 +141,9 @@ class UserAccountView implements ViewInterface {
 	}
         
         Map<String, Object> getWhereParameters_forsignin() throws Exception {
-		System.out.println("SIGN IN:");
-                String username = getString("username : ", true);
-                String password = getString("password : ", true);
+		System.out.println("\nSIGN IN:");
+                String username = getString("Username : ", true);
+                String password = getString("Password : ", true);
 		
 		Map<String, Object> whereParameters = new HashMap<>();
                 
@@ -219,24 +218,19 @@ class UserAccountView implements ViewInterface {
 		return new ViewData("UserAccount", "update", parameters);
 	}
         
+        ViewData deleteGUI(ModelData modelData) throws Exception {
+		Map<String, Object> parameters = new HashMap<>();
+		parameters.put("whereParameters", getWhereParameters());
+		
+		return new ViewData("UserAccount", "delete", parameters);
+	}
+        
         ViewData signinGUI(ModelData modelData) throws Exception {
             
                 Map<String, Object> parameters = new HashMap<>();
 		parameters.put("whereParameters", getWhereParameters_forsignin());
                 
-                //System.out.println(parameters);
-                //{whereParameters={password=ddd, username=fff}}
-                
-                
-                   return new ViewData("UserAccount", "signin", parameters); 
-                                
-	}
-
-	ViewData deleteGUI(ModelData modelData) throws Exception {
-		Map<String, Object> parameters = new HashMap<>();
-		parameters.put("whereParameters", getWhereParameters());
-		
-		return new ViewData("UserAccount", "delete", parameters);
+                return new ViewData("UserAccount", "signin", parameters);                        
 	}
         
         ViewData signupGUI(ModelData modelData) throws Exception {
@@ -248,14 +242,14 @@ class UserAccountView implements ViewInterface {
 		String username, password, email, first_name, last_name, is_project_manager;
 		do
 		{
-			System.out.println("Fields to insert:");
+			System.out.println("SIGN UP");
                         
-                        username = getString("username : ", true);
-                        password = getString("password : ", true);
-                        email = getString("email : ", true);
-                        first_name = getString("first_name : ", true);
-                        last_name = getString("last_name : ", true);
-                        is_project_manager = getString("is_project_manager :", true);                       
+                        username = getString("Username : ", true);
+                        password = getString("Password : ", true);
+                        email = getString("Email : ", true);
+                        first_name = getString("First Name : ", true);
+                        last_name = getString("Last Name : ", true);
+                        is_project_manager = getString("Are you project manager (y/n)? :", true);                    
                         
 			System.out.println();
 					

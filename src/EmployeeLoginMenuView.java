@@ -11,17 +11,14 @@ public class EmployeeLoginMenuView implements ViewInterface {
             
 
 		Integer choice;
-		do {
-                        System.out.println("        EMPLOYEE ");
-                        
-                        System.out.println("1. Show all of my projects");
-			System.out.println("2. Show a project");
-                        System.out.println("3. Project status");
-                        System.out.println("4. Quit");
+		do {    System.out.println("\n-------------------------------- E --------------------------------");                     
+                        System.out.println("1. Show all of my projects    2. Show a project   3. Project status");
+                        System.out.println("\nPress 0 to exit..\n");
 
 			choice = getInteger("Enter your choice : ", false);
+                        System.out.println("\n-------------------------------------------------------------------");
 		} 
-		while (choice == null || choice < 1 || choice > 14); //sayıyı değiştir duruma göre
+		while (choice == null || choice < 0 || choice > 3); //sayıyı değiştir duruma göre
 		
 		
 		Map<String, Object> userInput = new HashMap<>();

@@ -11,28 +11,21 @@ public class ManagerLoginMenuView implements ViewInterface {
             
 
 		Integer choice;
-		do {
-                        System.out.println("manager...");
-                        
-                        System.out.println("1. Show all of my projects");
-			System.out.println("2. Show a project");
-			System.out.println("3. Add a project");
-			System.out.println("4. Update a project");
-			System.out.println("5. Delete a project");
-                        System.out.println("----------------------------");
-                        System.out.println("6. Show all users");
-			System.out.println("7. Show users");
-			System.out.println("8. Add a user");
-			System.out.println("9. Update a user");
-			System.out.println("10. Delete a user");
-                        System.out.println("11. Add user to a project");
-                        System.out.println("12. Remove user from a project");
-                        
-			System.out.println("13. Quit");
+		do {    System.out.println("\n-------------------------------- M --------------------------------");
+                        System.out.println("         Project                            User ");
+                        System.out.println("1. Show all of the projects         6. Show all users");
+			System.out.println("2. Show a project                   7. Show users");
+			System.out.println("3. Add a project                    8. Add a user");
+			System.out.println("4. Update a project                 9. Update a user");
+			System.out.println("5. Delete a project                 10. Delete a user");
+                        System.out.println("                                    11. Add user to a project");
+                        System.out.println("                                    12. Remove user from a project");
+                        System.out.println("Press 0 to exit..\n");
 
 			choice = getInteger("Enter your choice : ", false);
+                        System.out.println("\n-------------------------------------------------------------------");
 		} 
-		while (choice == null || choice < 1 || choice > 14); //sayıyı değiştir duruma göre
+		while (choice == null || choice < 0 || choice > 13); //sayıyı değiştir duruma göre
 		
 		
 		Map<String, Object> userInput = new HashMap<>();

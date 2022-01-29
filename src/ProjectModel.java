@@ -1,30 +1,23 @@
+import java.sql.*;
+import java.util.*;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.List;
-import java.util.Map;
-
-/**
- *
- * @author nolen
- */
-public class ManagerModel implements ModelInterface {
-    
-        @Override
+class ProjectModel implements ModelInterface {
+	
+	@Override
 	public ResultSet select(Map<String, Object> whereParameters) throws Exception {
 		// construct SQL statement
 		StringBuilder sql = new StringBuilder();
 		sql.append(" SELECT ");
-		sql.append("	user_account_id, username, password, email, first_name, last_name, is_project_manager ");
-		sql.append(" FROM dbo.UserAccount ");
+		sql.append("	project_id, project_name, project_start_date, project_end_date, project_status ");
+		sql.append(" FROM dbo.Project ");
 
 		List<Map.Entry<String, Object>> whereParameterList = DatabaseUtilities.createWhereParameterList(whereParameters);		
 		sql.append(DatabaseUtilities.prepareWhereStatement(whereParameterList));
 		
-		sql.append("ORDER BY user_account_id");		
+		sql.append("ORDER BY project_id");		
 		//System.out.println(sql.toString() + "\n");
 
+		
 		// execute constructed SQL statement
 		Connection connection = DatabaseUtilities.getConnection();
 		PreparedStatement preparedStatement = connection.prepareStatement(sql.toString());
@@ -33,28 +26,29 @@ public class ManagerModel implements ModelInterface {
 		
 		return result;
 	}
-		
-	@Override
+        
+        @Override
 	public int insert(String fieldNames, List<Object> rows) throws Exception
 	{
 		// construct SQL statement
 		StringBuilder sql = new StringBuilder();
-		sql.append(" INSERT INTO dbo.UserAccount (" + fieldNames + ") " );
+		sql.append(" INSERT INTO dbo.Project (" + fieldNames + ") " );
 		sql.append(" VALUES ");
 
 		String[] fieldList = fieldNames.split(",");
 
 		int rowCount = 0;
 		for (int i=0; i<rows.size(); i++) {
-			if (rows.get(i) instanceof UserAccount) {
+			if (rows.get(i) instanceof Project) {
 				rowCount++;
+                                
 				
-				UserAccount userAccount = (UserAccount)rows.get(i); 
+				Project project = (Project)rows.get(i); 
 	
 				sql.append("(");
 				for (int j=0; j<fieldList.length; j++) {
 					String fieldName = fieldList[j].trim();
-					sql.append(DatabaseUtilities.formatField(userAccount.getByName(fieldName)));
+					sql.append(DatabaseUtilities.formatField(project.getByName(fieldName)));
 					if (j < fieldList.length - 1) {
 						sql.append(", ");
 					}
@@ -66,24 +60,29 @@ public class ManagerModel implements ModelInterface {
 				}				
 			}
 		}		
+		System.out.println(sql.toString());
 		
-                // execute constructed SQL statement
+		
+//                System.out.println("3 "+ rows.get(3) + "4 " + rows.get(4));
+                
+		// execute constructed SQL statement
 		if (rowCount > 0) {
 			Connection connection = DatabaseUtilities.getConnection();
 			PreparedStatement preparedStatement = connection.prepareStatement(sql.toString());
 			rowCount = preparedStatement.executeUpdate();
 			preparedStatement.close();
 		}
+              
 		
 		return rowCount;
-	}
+	}        
         
         @Override
 	public int update(Map<String,Object> updateParameters, Map<String,Object> whereParameters) throws Exception
 	{
 		// construct SQL statement
 		StringBuilder sql = new StringBuilder();
-		sql.append(" UPDATE dbo.UserAccount SET ");
+		sql.append(" UPDATE dbo.Project SET ");
 		int appendCount = 0;
 		for (Map.Entry<String, Object> entry : updateParameters.entrySet()) {
 			sql.append(entry.getKey() + " = " + DatabaseUtilities.formatField(entry.getValue()));
@@ -111,7 +110,7 @@ public class ManagerModel implements ModelInterface {
 	{
 		// construct SQL statement
 		StringBuilder sql = new StringBuilder();
-		sql.append(" DELETE FROM dbo.UserAccount ");
+		sql.append(" DELETE FROM dbo.Project ");
 
 		List<Map.Entry<String, Object>> whereParameterList = DatabaseUtilities.createWhereParameterList(whereParameters);		
 		sql.append(DatabaseUtilities.prepareWhereStatement(whereParameterList));
@@ -129,14 +128,9 @@ public class ManagerModel implements ModelInterface {
 	}
         
         @Override
-	public int signup(String fieldNames, List<Object> rows) throws Exception { return 0; }
-        
-        @Override
 	public ResultSet signin(Map<String, Object> whereParameters) throws Exception { return null; }
-        
+		
+	
         @Override
-	public String toString() {
-		return "Manager Model";
-	}
-    
+	public int signup(String fieldNames, List<Object> rows) throws Exception { return 0; }
 }
