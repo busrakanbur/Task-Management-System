@@ -26,13 +26,12 @@ public class NopModel implements ModelInterface {
 		return 0;
 	}
         
-        @Override
         public int signup(String fieldNames, List<Object> rows) throws Exception {
 		return 0;
 	}
         
         @Override
-        public ResultSet signin(Map<String, Object> whereParameters) throws Exception {
+	public ResultSet signin(Map<String, Object> whereParameters) throws Exception {
 		return null;
 	}
         

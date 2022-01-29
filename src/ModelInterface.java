@@ -69,7 +69,7 @@ import java.util.*;
 			{
 				Map<String, Object> whereParameters = (Map<String, Object>)(viewData.viewParameters.get("whereParameters"));
 				
-				ResultSet resultSet = signin(whereParameters);
+				ResultSet resultSet = select(whereParameters);
 				
 				return new ModelData(viewData.functionName, resultSet);
 			}

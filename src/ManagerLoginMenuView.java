@@ -27,7 +27,8 @@ public class ManagerLoginMenuView implements ViewInterface {
 			System.out.println("10. Delete a user");
                         System.out.println("11. Add user to a project");
                         System.out.println("12. Remove user from a project");
-                        System.out.println("13. Quit");
+                        
+			System.out.println("13. Quit");
 
 			choice = getInteger("Enter your choice : ", false);
 		} 
@@ -50,7 +51,7 @@ public class ManagerLoginMenuView implements ViewInterface {
 		case 10: operationName = "insert.gui";	break;
 		case 11: operationName = "update.gui";	break;
 		case 12: operationName = "delete.gui";	break;
-                default: return new ViewData(null, null);
+		default: return new ViewData(null, null);
 		}
 		
 		return new ViewData("Manager", operationName, new HashMap<>());

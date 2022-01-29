@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.util.List;
 import java.util.Map;
 
+
 /**
  *
  * @author nolen
@@ -79,7 +80,10 @@ public class ManagerModel implements ModelInterface {
 		}
 		
 		return rowCount;
-	}      
+	}
+        
+        
+        
 	
 	@Override
 	public int update(Map<String,Object> updateParameters, Map<String,Object> whereParameters) throws Exception
@@ -131,6 +135,7 @@ public class ManagerModel implements ModelInterface {
 		return rowCount;
 	}
         
+        
         @Override
 	public int signup(String fieldNames, List<Object> rows) throws Exception
 	{
@@ -146,12 +151,12 @@ public class ManagerModel implements ModelInterface {
 			if (rows.get(i) instanceof UserAccount) {
 				rowCount++;
 				
-				UserAccount userAccount = (UserAccount)rows.get(i); 
+				UserAccount department = (UserAccount)rows.get(i); 
 	
 				sql.append("(");
 				for (int j=0; j<fieldList.length; j++) {
 					String fieldName = fieldList[j].trim();
-					sql.append(DatabaseUtilities.formatField(userAccount.getByName(fieldName)));
+					sql.append(DatabaseUtilities.formatField(department.getByName(fieldName)));
 					if (j < fieldList.length - 1) {
 						sql.append(", ");
 					}
@@ -180,10 +185,10 @@ public class ManagerModel implements ModelInterface {
         @Override //BU TAMAMEN DEĞİŞMELİ
 	public ResultSet signin(Map<String, Object> whereParameters) throws Exception
 	{
-		// construct SQL statement
+			
 		StringBuilder sql = new StringBuilder();
 		sql.append(" SELECT ");
-		sql.append("	username, password ");
+		sql.append("	user_account_id, username, password, email, first_name, last_name, is_project_manager ");
 		sql.append(" FROM dbo.UserAccount ");
 
 		List<Map.Entry<String, Object>> whereParameterList = DatabaseUtilities.createWhereParameterList(whereParameters);		
@@ -200,7 +205,9 @@ public class ManagerModel implements ModelInterface {
 		ResultSet result = preparedStatement.executeQuery();
 		
 		return result;
-	}       
+	}
+        
+        
 
 	@Override
 	public String toString() {
