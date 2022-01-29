@@ -146,10 +146,14 @@ class UserAccountModel implements ModelInterface {
 		return rowCount;
 	}
         
+        
+        
+        
         @Override
 	public int signup(String fieldNames, List<Object> rows) throws Exception
 	{
 		// construct SQL statement
+            
 		StringBuilder sql = new StringBuilder();
 		sql.append(" INSERT INTO dbo.UserAccount (" + fieldNames + ") " );
 		sql.append(" VALUES ");
@@ -177,10 +181,47 @@ class UserAccountModel implements ModelInterface {
 					sql.append(", ");
 				}				
 			}
-		}		
-		//System.out.println(sql.toString());
-		
-		
+		}
+                /*
+                List<Object> rows2 = new ArrayList<>();
+                
+		String fieldNames2 = "project_id";
+                StringBuilder sql2 = new StringBuilder();
+		sql2.append(" INSERT INTO dbo.Manager (" + "project_id" + ") " );
+		sql2.append(" VALUES ");
+                
+                String[] fieldList2 = fieldNames2.split(",");
+
+		int rowCount2 = 0;
+		for (int i=0; i<rows.size(); i++) {
+			if (rows.get(i) instanceof Manager) {
+				rowCount2++;
+				
+				Manager manager = (Manager)rows.get(i); 
+	
+				sql2.append("(");
+				for (int j=0; j<fieldList2.length; j++) {
+					String fieldName2 = fieldList2[j].trim();
+					sql2.append(DatabaseUtilities.formatField(manager.getByName(fieldName2)));
+					if (j < fieldList2.length - 1) {
+						sql2.append(", ");
+					}
+				}
+				sql2.append(")");
+				
+				if (i < rows.size() - 1) {
+					sql2.append(", ");
+				}				
+			}
+		}
+                Short project_id = 0;
+                
+                rows2.add(new Manager(project_id) {});
+		*/
+                
+                
+                
+                
 		// execute constructed SQL statement
 		if (rowCount > 0) {
 			Connection connection = DatabaseUtilities.getConnection();

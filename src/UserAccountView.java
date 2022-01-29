@@ -35,6 +35,8 @@ class UserAccountView implements ViewInterface {
 	ViewData selectOperation(ModelData modelData) throws Exception {
 		ResultSet resultSet = modelData.resultSet;
 		
+                System.out.println("User List");
+                
 		if (resultSet != null) {
 			while (resultSet.next()) {
 				// Retrieve by column first_name
@@ -113,8 +115,8 @@ class UserAccountView implements ViewInterface {
 	}
         
         ViewData signupOperation(ModelData modelData) throws Exception {
-		System.out.println("Number of sign up operation is " + modelData.recordCount);
-		
+		//System.out.println("Number of sign up operation is " + modelData.recordCount);
+		          System.out.println("\n-------------------------------------------------------------------\n");
 		return new ViewData("MainMenu", "");
 	}
         

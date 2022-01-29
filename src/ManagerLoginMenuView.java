@@ -13,11 +13,11 @@ public class ManagerLoginMenuView implements ViewInterface {
 		Integer choice;
 		do {    System.out.println("\n-------------------------------- M --------------------------------");
                         System.out.println("         Project                            User ");
-                        System.out.println("1. Show all of the projects         6. Show all users");
-			System.out.println("2. Show a project                   7. Show users");
-			System.out.println("3. Add a project                    8. Add a user");
-			System.out.println("4. Update a project                 9. Update a user");
-			System.out.println("5. Delete a project                 10. Delete a user");
+                        System.out.println("1. Show all of the projects         6.  Show all users");
+			System.out.println("2. Show a spesific project          7.  Show a spesific user");
+			System.out.println("3. Add project                      8.  Add user");
+			System.out.println("4. Update project                   9.  Update user");
+			System.out.println("5. Delete project                   10. Delete user");
                         System.out.println("                                    11. Add user to a project");
                         System.out.println("                                    12. Remove user from a project");
                         System.out.println("Press 0 to exit..\n");
@@ -37,13 +37,13 @@ public class ManagerLoginMenuView implements ViewInterface {
 		case 3: operationName = "insert.gui";	break;
 		case 4: operationName = "update.gui";	break;
 		case 5: operationName = "delete.gui";	break;
-                case 6: operationName = "signin.gui";	break;
-                case 7: operationName = "signup.gui";	break;
-                case 8: operationName = "select";	break;
-		case 9: operationName = "select.gui";	break;
-		case 10: operationName = "insert.gui";	break;
-		case 11: operationName = "update.gui";	break;
-		case 12: operationName = "delete.gui";	break;
+                case 6: operationName = "select";	break;
+                case 7: operationName = "select.gui";	break;
+                case 8: operationName = "insert.gui";	break;
+		case 9: operationName = "update.gui";	break;
+		case 10: operationName = "delete.gui";	break;
+		case 11: operationName = "addUserToProject.gui";	break; //yeni
+		case 12: operationName = "removeUserFromProject";	break; //yeni
 		default: return new ViewData(null, null);
 		}
 		

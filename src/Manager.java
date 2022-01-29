@@ -11,6 +11,10 @@ public class Manager extends UserAccount {
     public Manager() {
     }
 
+    public Manager(short project_id) {
+        this.project_id = project_id;
+    }
+
     public Manager(short manager_id, short project_id) {
         this.manager_id = manager_id;
         this.project_id = project_id;
