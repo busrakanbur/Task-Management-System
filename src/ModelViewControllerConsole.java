@@ -21,7 +21,7 @@ public class ModelViewControllerConsole {
         ViewData viewData = new ViewData("MainMenu", "");
         ViewData viewData2 = new ViewData("ManagerLoginMenu", "");
 
-        System.out.println("-" + viewData.functionName + "---" + viewData2.functionName);
+        //System.out.println("-" + viewData.functionName + "---" + viewData2.functionName);
         
         do {
             // Model, View, and Controller
@@ -50,15 +50,11 @@ public class ModelViewControllerConsole {
                 } while (viewData.functionName != null);
             }
 
-
-            
             //viewData.functionName = "select";
             //System.out.println("xxx");
             //System.out.println("-" + viewData.functionName + "---" + viewData2.functionName);
 
-        } while (viewData.functionName != null); //8 quit
-
-        
+        } while (viewData.functionName != null); //8 quit       
         
         System.out.println();
         System.out.println();
@@ -69,7 +65,7 @@ public class ModelViewControllerConsole {
     }
 
     public static void connectToDatabase() {
-        DatabaseUtilities.host = "localhost:49669";
+        DatabaseUtilities.host = "localhost:49670";
         DatabaseUtilities.databaseName = "Project2";
 
         try {

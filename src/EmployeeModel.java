@@ -1,9 +1,17 @@
-import java.sql.*;
-import java.util.*;
 
-class UserAccountModel implements ModelInterface {
-	
-	@Override
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.List;
+import java.util.Map;
+
+/**
+ *
+ * @author nolen
+ */
+public class EmployeeModel implements ModelInterface {
+    
+    @Override
 	public ResultSet select(Map<String, Object> whereParameters) throws Exception {
 		// construct SQL statement
 		StringBuilder sql = new StringBuilder();
@@ -16,30 +24,6 @@ class UserAccountModel implements ModelInterface {
 		
 		sql.append("ORDER BY user_account_id");		
 		//System.out.println(sql.toString() + "\n");
-
-		
-		// execute constructed SQL statement
-		Connection connection = DatabaseUtilities.getConnection();
-		PreparedStatement preparedStatement = connection.prepareStatement(sql.toString());
-		DatabaseUtilities.setWhereStatementParameters(preparedStatement, whereParameterList);
-		ResultSet result = preparedStatement.executeQuery();
-		
-		return result;
-	}
-        
-         @Override //BU TAMAMEN DEĞİŞMELİ
-	public ResultSet signin(Map<String, Object> whereParameters) throws Exception
-	{		
-		StringBuilder sql = new StringBuilder();
-		sql.append(" SELECT ");
-		sql.append("	username, password, is_project_manager");
-		sql.append(" FROM dbo.UserAccount ");
-
-		List<Map.Entry<String, Object>> whereParameterList = DatabaseUtilities.createWhereParameterList(whereParameters);		
-		sql.append(DatabaseUtilities.prepareWhereStatement(whereParameterList));
-		
-		//sql.append("ORDER BY user_account_id");		
-		System.out.println(sql.toString() + "\n");
 
 		
 		// execute constructed SQL statement
@@ -65,7 +49,6 @@ class UserAccountModel implements ModelInterface {
 		for (int i=0; i<rows.size(); i++) {
 			if (rows.get(i) instanceof UserAccount) {
 				rowCount++;
-                                
 				
 				UserAccount userAccount = (UserAccount)rows.get(i); 
 	
@@ -84,11 +67,9 @@ class UserAccountModel implements ModelInterface {
 				}				
 			}
 		}		
-		System.out.println(sql.toString());
+		//System.out.println(sql.toString());
 		
 		
-//                System.out.println("3 "+ rows.get(3) + "4 " + rows.get(4));
-                
 		// execute constructed SQL statement
 		if (rowCount > 0) {
 			Connection connection = DatabaseUtilities.getConnection();
@@ -96,48 +77,14 @@ class UserAccountModel implements ModelInterface {
 			rowCount = preparedStatement.executeUpdate();
 			preparedStatement.close();
 		}
-                
-                
-                //manager
-                
-                /*
-                String fieldNames2 = "project_id";
-                sql.append(" INSERT INTO dbo.Manager (" + fieldNames2 + ") " );
-		sql.append(" VALUES ");
-                    
-                List<Object> rows2 = new ArrayList<>();
-                rows2.add(new Manager())};
-                
-		String[] fieldList2 = fieldNames2.split(",");
-
-		for (int i=0; i<rows.size(); i++) {
-			if (rows.get(i) instanceof UserAccount) {
-				
-				UserAccount userAccount = (UserAccount)rows.get(i); 
-	
-				sql.append("(");
-				for (int j=0; j<fieldList.length; j++) {
-					String fieldName = fieldList[j].trim();
-					sql.append(DatabaseUtilities.formatField(userAccount.getByName(fieldName)));
-					if (j < fieldList.length - 1) {
-						sql.append(", ");
-					}
-				}
-				sql.append(")");
-				
-				if (i < rows.size() - 1) {
-					sql.append(", ");
-				}				
-			}
-		}		*/
-                
-                
 		
 		return rowCount;
 	}
         
         
-        @Override
+        
+	
+	@Override
 	public int update(Map<String,Object> updateParameters, Map<String,Object> whereParameters) throws Exception
 	{
 		// construct SQL statement
@@ -234,8 +181,36 @@ class UserAccountModel implements ModelInterface {
 		return rowCount;
 	}
         
-        @Override
+        @Override //BU TAMAMEN DEĞİŞMELİ
+	public ResultSet signin(Map<String, Object> whereParameters) throws Exception
+	{
+			
+		StringBuilder sql = new StringBuilder();
+		sql.append(" SELECT ");
+		sql.append("	user_account_id, username, password, email, first_name, last_name, is_project_manager ");
+		sql.append(" FROM dbo.UserAccount ");
+
+		List<Map.Entry<String, Object>> whereParameterList = DatabaseUtilities.createWhereParameterList(whereParameters);		
+		sql.append(DatabaseUtilities.prepareWhereStatement(whereParameterList));
+		
+		sql.append("ORDER BY user_account_id");		
+		//System.out.println(sql.toString() + "\n");
+
+		
+		// execute constructed SQL statement
+		Connection connection = DatabaseUtilities.getConnection();
+		PreparedStatement preparedStatement = connection.prepareStatement(sql.toString());
+		DatabaseUtilities.setWhereStatementParameters(preparedStatement, whereParameterList);
+		ResultSet result = preparedStatement.executeQuery();
+		
+		return result;
+	}
+        
+        
+
+	@Override
 	public String toString() {
 		return "User Account Model";
 	}
+    
 }
