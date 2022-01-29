@@ -27,7 +27,7 @@ class UserAccountModel implements ModelInterface {
 		return result;
 	}
         
-         @Override //BU TAMAMEN DEĞİŞMELİ
+         @Override
 	public ResultSet signin(Map<String, Object> whereParameters) throws Exception
 	{		
 		StringBuilder sql = new StringBuilder();
@@ -86,56 +86,15 @@ class UserAccountModel implements ModelInterface {
 		}		
 		System.out.println(sql.toString());
 		
-		
-//                System.out.println("3 "+ rows.get(3) + "4 " + rows.get(4));
-                
-		// execute constructed SQL statement
 		if (rowCount > 0) {
 			Connection connection = DatabaseUtilities.getConnection();
 			PreparedStatement preparedStatement = connection.prepareStatement(sql.toString());
 			rowCount = preparedStatement.executeUpdate();
 			preparedStatement.close();
 		}
-                
-                
-                //manager
-                
-                /*
-                String fieldNames2 = "project_id";
-                sql.append(" INSERT INTO dbo.Manager (" + fieldNames2 + ") " );
-		sql.append(" VALUES ");
-                    
-                List<Object> rows2 = new ArrayList<>();
-                rows2.add(new Manager())};
-                
-		String[] fieldList2 = fieldNames2.split(",");
-
-		for (int i=0; i<rows.size(); i++) {
-			if (rows.get(i) instanceof UserAccount) {
-				
-				UserAccount userAccount = (UserAccount)rows.get(i); 
-	
-				sql.append("(");
-				for (int j=0; j<fieldList.length; j++) {
-					String fieldName = fieldList[j].trim();
-					sql.append(DatabaseUtilities.formatField(userAccount.getByName(fieldName)));
-					if (j < fieldList.length - 1) {
-						sql.append(", ");
-					}
-				}
-				sql.append(")");
-				
-				if (i < rows.size() - 1) {
-					sql.append(", ");
-				}				
-			}
-		}		*/
-                
-                
-		
+               
 		return rowCount;
 	}
-        
         
         @Override
 	public int update(Map<String,Object> updateParameters, Map<String,Object> whereParameters) throws Exception
@@ -186,7 +145,6 @@ class UserAccountModel implements ModelInterface {
 		
 		return rowCount;
 	}
-        
         
         @Override
 	public int signup(String fieldNames, List<Object> rows) throws Exception
