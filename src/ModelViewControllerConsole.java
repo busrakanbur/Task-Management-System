@@ -38,7 +38,7 @@ public class ModelViewControllerConsole {
     }
 
     public static void connectToDatabase() {
-        DatabaseUtilities.host = "localhost:49669";
+        DatabaseUtilities.host = "localhost:49670";
         DatabaseUtilities.databaseName = "Project2";
 
         try {

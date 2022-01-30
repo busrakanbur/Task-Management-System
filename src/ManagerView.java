@@ -34,7 +34,7 @@ public class ManagerView implements ViewInterface {
 	ViewData selectOperation(ModelData modelData) throws Exception {
 		ResultSet resultSet = modelData.resultSet;
 		
-		if (resultSet != null) {
+                if (resultSet != null) {
 			while (resultSet.next()) {
 				// Retrieve by column first_name
 				short user_account_id = resultSet.getShort("user_account_id");
@@ -80,23 +80,24 @@ public class ManagerView implements ViewInterface {
 	}	
 	
         Map<String, Object> getWhereParameters() throws Exception {
-		System.out.println("Filter conditions:");
-		Integer user_account_id = getInteger("user_account_id : ", true);
-                String username = getString("username : ", true);
-                String password = getString("password : ", true);
-                String email = getString("email : ", true);
-                String first_name = getString("first_name : ", true);
-                String last_name = getString("last_name : ", true);
-                String is_project_manager = getString("is_project_manager :", true);
+		System.out.println("\nEnter the user informations..");
+		Integer user_account_id = getInteger("User Account Id : ", true);
+                //String username = getString("Username : ", true);
+                //String password = getString("Password : ", true);
+                //String email = getString("Email : ", true);
+                String first_name = getString("First Name : ", true);
+                String last_name = getString("Last Name : ", true);
+                //String is_project_manager = getString("Is Project Manager :", true);
+                System.out.println();
 		
 		Map<String, Object> whereParameters = new HashMap<>();                
 		if (user_account_id != null) whereParameters.put("user_account_id", user_account_id);
-		if (username != null) whereParameters.put("username", username);
-		if (password != null) whereParameters.put("password", password);
-		if (email != null) whereParameters.put("email", email);
+		//if (username != null) whereParameters.put("username", username);
+		//if (password != null) whereParameters.put("password", password);
+		//if (email != null) whereParameters.put("email", email);
 		if (first_name != null) whereParameters.put("first_name", first_name);
 		if (last_name != null) whereParameters.put("last_name", last_name);
-                if (is_project_manager != null) whereParameters.put("is_project_manager", is_project_manager);
+                //if (is_project_manager != null) whereParameters.put("is_project_manager", is_project_manager);
                 
 		return whereParameters;
 	}
@@ -117,17 +118,16 @@ public class ManagerView implements ViewInterface {
 		String username, password, email, first_name, last_name, is_project_manager;
 		do
 		{
-			System.out.println("Fields to insert:");
+			System.out.println("Add User");
                         
-                        username = getString("username : ", true);
-                        password = getString("password : ", true);
-                        email = getString("email : ", true);
-                        first_name = getString("first_name : ", true);
-                        last_name = getString("last_name : ", true);
-                        is_project_manager = getString("is_project_manager :", true);                       
-                        
-			System.out.println();
-					
+                        username = getString("Username : ", true);
+                        password = getString("Password : ", true);
+                        email = getString("Email : ", true);
+                        first_name = getString("First Name : ", true);
+                        last_name = getString("Last Name : ", true);
+                        is_project_manager = getString("Is Project Manager :", true); 
+                        System.out.println();
+                        					
 			if (username != null && password != null && email != null && first_name != null && last_name != null && is_project_manager != null) {
 				rows.add(new UserAccount(username, password, email, first_name, last_name, is_project_manager) {});
 			}
@@ -140,13 +140,12 @@ public class ManagerView implements ViewInterface {
 	}
 
 	ViewData updateGUI(ModelData modelData) throws Exception {
-		System.out.println("Fields to update:");
-		String username = getString("username : ", true);
-                String password = getString("password : ", true);
-                String email = getString("email : ", true);
-                String first_name = getString("first_name : ", true);
-                String last_name = getString("last_name : ", true);
-		System.out.println();
+		System.out.println("Enter new informations");
+		String username = getString("Username : ", true);
+                String password = getString("Password : ", true);
+                String email = getString("Email : ", true);
+                String first_name = getString("First Name : ", true);
+                String last_name = getString("Last Name : ", true);
 		
 		Map<String, Object> updateParameters = new HashMap<>();
                 if (username != null) updateParameters.put("username", username);

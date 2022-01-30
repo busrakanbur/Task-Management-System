@@ -20,7 +20,7 @@ public class ManagerLoginMenuView implements ViewInterface {
 			System.out.println("5. Delete project                   10. Delete user");
                         System.out.println("                                    11. Add user to a project");
                         System.out.println("                                    12. Remove user from a project");
-                        System.out.println("Press 0 to exit..\n");
+                        System.out.println("> Press 0 to exit..\n");
 
 			choice = getInteger("Enter your choice : ", false);
                         System.out.println("\n-------------------------------------------------------------------");

@@ -110,6 +110,7 @@ class UserAccountView implements ViewInterface {
                 }                
                 else{
                     System.out.println("Something is wrong. Try again.");
+                    System.out.println("\n-------------------------------------------------------------------");
                     return new ViewData("MainMenu", "");
                 }                
 	}
@@ -143,7 +144,7 @@ class UserAccountView implements ViewInterface {
 	}
         
         Map<String, Object> getWhereParameters_forsignin() throws Exception {
-		System.out.println("\nSIGN IN:");
+		System.out.println("\nSIGN IN");
                 String username = getString("Username : ", true);
                 String password = getString("Password : ", true);
 		
@@ -251,15 +252,17 @@ class UserAccountView implements ViewInterface {
                         email = getString("Email : ", true);
                         first_name = getString("First Name : ", true);
                         last_name = getString("Last Name : ", true);
-                        is_project_manager = getString("Are you project manager (y/n)? :", true);                    
+                        is_project_manager = getString("Are you project manager (y/n)? : ", true);                    
                         
 			System.out.println();
 					
 			if (username != null && password != null && email != null && first_name != null && last_name != null && is_project_manager != null) {
-				rows.add(new UserAccount(username, password, email, first_name, last_name, is_project_manager) {});
+                            System.out.println("Registration completed successfully.");
+                            rows.add(new UserAccount(username, password, email, first_name, last_name, is_project_manager) {});
 			}
+                        else System.out.println("Registration failed! Fill in all values..");
 		}
-		while (username != null && password != null && email != null && first_name != null && last_name != null && is_project_manager != null);
+		while (username == null && password == null && email == null && first_name == null && last_name == null && is_project_manager == null);
                 
                 parameters.put("rows", rows);
 		

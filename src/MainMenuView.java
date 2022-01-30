@@ -10,7 +10,7 @@ public class MainMenuView implements ViewInterface {
     @Override
 	public ViewData create(ModelData modelData, String functionName, String operationName) throws Exception {
             
-            System.out.println("\nFAB'TASK");
+            System.out.println("FAB'TASK");
 
 		Integer choice;
 		do {
