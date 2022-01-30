@@ -27,31 +27,7 @@ class UserAccountModel implements ModelInterface {
 		return result;
 	}
         
-         @Override
-	public ResultSet signin(Map<String, Object> whereParameters) throws Exception
-	{		
-		StringBuilder sql = new StringBuilder();
-		sql.append(" SELECT ");
-		sql.append("	username, password, is_project_manager");
-		sql.append(" FROM dbo.UserAccount ");
-
-		List<Map.Entry<String, Object>> whereParameterList = DatabaseUtilities.createWhereParameterList(whereParameters);		
-		sql.append(DatabaseUtilities.prepareWhereStatement(whereParameterList));
-		
-		//sql.append("ORDER BY user_account_id");		
-		System.out.println(sql.toString() + "\n");
-
-		
-		// execute constructed SQL statement
-		Connection connection = DatabaseUtilities.getConnection();
-		PreparedStatement preparedStatement = connection.prepareStatement(sql.toString());
-		DatabaseUtilities.setWhereStatementParameters(preparedStatement, whereParameterList);
-		ResultSet result = preparedStatement.executeQuery();
-		
-		return result;
-	}
-		
-	@Override
+        @Override
 	public int insert(String fieldNames, List<Object> rows) throws Exception
 	{
 		// construct SQL statement
@@ -146,8 +122,29 @@ class UserAccountModel implements ModelInterface {
 		return rowCount;
 	}
         
-        
-        
+         @Override
+	public ResultSet signin(Map<String, Object> whereParameters) throws Exception
+	{		
+		StringBuilder sql = new StringBuilder();
+		sql.append(" SELECT ");
+		sql.append("	username, password, is_project_manager");
+		sql.append(" FROM dbo.UserAccount ");
+
+		List<Map.Entry<String, Object>> whereParameterList = DatabaseUtilities.createWhereParameterList(whereParameters);		
+		sql.append(DatabaseUtilities.prepareWhereStatement(whereParameterList));
+		
+		//sql.append("ORDER BY user_account_id");		
+		System.out.println(sql.toString() + "\n");
+
+		
+		// execute constructed SQL statement
+		Connection connection = DatabaseUtilities.getConnection();
+		PreparedStatement preparedStatement = connection.prepareStatement(sql.toString());
+		DatabaseUtilities.setWhereStatementParameters(preparedStatement, whereParameterList);
+		ResultSet result = preparedStatement.executeQuery();
+		
+		return result;
+	}
         
         @Override
 	public int signup(String fieldNames, List<Object> rows) throws Exception
@@ -219,10 +216,7 @@ class UserAccountModel implements ModelInterface {
                 rows2.add(new Manager(project_id) {});
 		*/
                 
-                
-                
-                
-		// execute constructed SQL statement
+                // execute constructed SQL statement
 		if (rowCount > 0) {
 			Connection connection = DatabaseUtilities.getConnection();
 			PreparedStatement preparedStatement = connection.prepareStatement(sql.toString());

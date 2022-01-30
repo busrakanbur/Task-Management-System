@@ -67,20 +67,26 @@ abstract class UserAccount {
     
     public Object getByName(String attributeName) {
         switch (attributeName) {
-            case "user_account_id": return user_account_id;
-            case "username": return username;
-            case "password": return password;
-            case "email": return email;
-            case "first_name": return first_name;
-            case "last_name": return last_name;
-            case "is_project_manager": return is_project_manager;
-            default: return null;
+            case "user_account_id":     return user_account_id;
+            case "username":            return username;
+            case "password":            return password;
+            case "email":               return email;
+            case "first_name":          return first_name;
+            case "last_name":           return last_name;
+            case "is_project_manager":  return is_project_manager;
+            default:                    return null;
 	}
     }
         
     @Override
     public String toString() {
-        return user_account_id + ", " + username + ", " + password + ", " + email + ", " + first_name + ", " + last_name + ", " + is_project_manager;
+        return "User Account Id: " + user_account_id 
+                + ", Username: " + username 
+                + ", Password: " + password 
+                + ", Email: " + email 
+                + ", First Name: " + first_name 
+                + ", Last Name: " + last_name 
+                + ", Is Project Manager: " + is_project_manager;
     }
 	
 }

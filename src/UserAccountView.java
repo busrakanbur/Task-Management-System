@@ -117,7 +117,7 @@ class UserAccountView implements ViewInterface {
         
         ViewData signupOperation(ModelData modelData) throws Exception {
 		//System.out.println("Number of sign up operation is " + modelData.recordCount);
-		          System.out.println("\n-------------------------------------------------------------------\n");
+		System.out.println("\n-------------------------------------------------------------------\n");
 		return new ViewData("MainMenu", "");
 	}
         
@@ -239,7 +239,7 @@ class UserAccountView implements ViewInterface {
         ViewData signupGUI(ModelData modelData) throws Exception {
 		Map<String, Object> parameters = new HashMap<>();
 		parameters.put("fieldNames", "username, password, email, first_name, last_name, is_project_manager");
-
+                
 		List<Object> rows = new ArrayList<>();
 		
 		String username, password, email, first_name, last_name, is_project_manager;

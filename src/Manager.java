@@ -49,17 +49,10 @@ public class Manager extends UserAccount {
 	}
     }
     
-    
-    
     @Override
     public String toString() {
-        return "Manager{" + "manager_id=" + manager_id + ", project_id=" + project_id + '}';
+        return "Manager Id: " + manager_id 
+                + ", Project Id=" + project_id;
     }
-    
-    
-    
-    
-    
-    
     
 }

@@ -15,12 +15,12 @@ public class ModelViewControllerConsole {
 
         router.put("ManagerLoginMenu", new Controller(new ManagerLoginMenuView(), new NopModel()));
         router.put("Manager", new Controller(new ManagerView(), new ManagerModel()));
+        router.put("Project", new Controller(new ProjectView(), new ProjectModel()));
+        router.put("Task", new Controller(new TaskView(), new TaskModel()));
         
         router.put("EmployeeLoginMenu", new Controller(new EmployeeLoginMenuView(), new NopModel()));
         router.put("Employee", new Controller(new EmployeeView(), new EmployeeModel()));
         
-        router.put("Project", new Controller(new ProjectView(), new ProjectModel()));
-
         ViewData viewData = new ViewData("MainMenu", "");
         
         do {

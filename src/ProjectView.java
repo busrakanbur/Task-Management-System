@@ -40,8 +40,7 @@ class ProjectView implements ViewInterface {
                                 String project_description = resultSet.getString("project_description");
                                 int project_status = resultSet.getInt("project_status");
                                 
-                                
-				// Display values
+                                // Display values
 				System.out.print(project_id + "\t");
 				System.out.print(project_name + "\t");
 				System.out.print(" " + project_start_date + "\t");
@@ -117,8 +116,8 @@ class ProjectView implements ViewInterface {
 			System.out.println("Add Project");
                         
                         project_name = getString("Project Name : ", true);
-                        project_start_date = getString("Project Start Date : ", true);
-                        project_end_date = getString("Project End Date : ", true);
+                        project_start_date = getString("Project Start Date (yy/mm/dd): ", true);
+                        project_end_date = getString("Project End Date (yy/mm/dd): ", true);
                         project_description = getString("Description : ", true);
                         project_status = getInteger("Status : ", true);                    
                         

@@ -43,15 +43,20 @@ public class Employee extends UserAccount{
 
     public void setEmployee_name(String employee_name) { this.employee_name = employee_name; }
 
-    @Override
-    public String toString() {
-        return "Employee{" + "employee_id=" + employee_id + ", employee_code=" + employee_code + ", employee_name=" + employee_name + '}';
+    public Object getByName(String attributeName) {
+        switch (attributeName) {
+            case "employee_id":     return employee_id;
+            case "employee_name":   return employee_name;
+            case "employee_code":   return employee_code;            
+            default:                return null;
+	}
     }
     
-    
-    
-    
-    
-    
+    @Override
+    public String toString() {
+        return "Employee Id: " + employee_id 
+                + ", Employee Code: " + employee_code 
+                + ", Employee Name: " + employee_name;
+    }
     
 }

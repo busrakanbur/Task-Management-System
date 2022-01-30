@@ -11,6 +11,9 @@ public class Project {
     private String project_description;
     private int project_status;
 
+    public Project() {
+        
+    }
 
     public Project(short project_id, String project_name, String project_start_date, String project_end_date,  String project_description,int project_status) {
         this.project_id = project_id;
@@ -54,20 +57,23 @@ public class Project {
     
     public Object getByName(String attributeName) {
         switch (attributeName) {
-            case "project_id": return project_id;
-            case "project_name": return project_name;
-            case "project_start_date": return project_start_date;
-            case "project_end_date": return project_end_date;
+            case "project_id":          return project_id;
+            case "project_name":        return project_name;
+            case "project_start_date":  return project_start_date;
+            case "project_end_date":    return project_end_date;
             case "project_description": return project_description;
-            case "project_status": return project_status;
-            default: return null;
+            case "project_status":      return project_status;
+            default:                    return null;
 	}
     }
 
     @Override
     public String toString() {
-        return "Project{" + "project_id=" + project_id + ", project_name=" + project_name + ", project_start_date=" + project_start_date + ", project_end_date=" + project_end_date + ", project_description=" + project_description + '}';
+        return "Project Id: " + project_id 
+                + ", Project Name: " + project_name 
+                + ", Project Start Date: " + project_start_date 
+                + ", Project End Date: " + project_end_date 
+                + ", Project Description: " + project_description;
     }
-
     
 }
