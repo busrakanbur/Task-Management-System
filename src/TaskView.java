@@ -35,7 +35,7 @@ class TaskView implements ViewInterface {
 				// Retrieve by column first_name
 				short task_id = resultSet.getShort("task_id");
                                 String task_name = resultSet.getString("task_name");
-                                short project_id = resultSet.getShort("project_id");
+                                Integer project_id = resultSet.getInt("project_id");
                                 int priority = resultSet.getInt("priority");
                                 String task_start_date = resultSet.getString("task_start_date");
                                 String task_end_date = resultSet.getString("task_end_date");
@@ -119,7 +119,8 @@ class TaskView implements ViewInterface {
 		List<Object> rows = new ArrayList<>();
 		
                 String task_name, task_start_date, task_end_date, task_description;
-                Integer task_status, project_id, priority;
+                Integer task_status, priority, project_id;
+                
 		do
 		{
 			System.out.println("Add Task");
@@ -138,7 +139,7 @@ class TaskView implements ViewInterface {
 				rows.add(new Task(task_name, project_id, priority, task_description, task_start_date, task_end_date, task_status));
 			}
 		}
-		while (task_name != null && project_id!=null && priority!= null && task_start_date != null && task_end_date != null && task_description != null && task_status != null);
+		while (task_name != null && project_id != null && priority!= null && task_start_date != null && task_end_date != null && task_description != null && task_status != null);
                 
                 parameters.put("rows", rows);
 		

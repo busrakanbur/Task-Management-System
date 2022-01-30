@@ -33,7 +33,7 @@ class ProjectView implements ViewInterface {
                 if (resultSet != null) {
 			while (resultSet.next()) {
 				// Retrieve by column first_name
-				short project_id = resultSet.getShort("project_id");
+				int project_id = resultSet.getInt("project_id");
                                 String project_name = resultSet.getString("project_name");
                                 String project_start_date = resultSet.getString("project_start_date");
                                 String project_end_date = resultSet.getString("project_end_date");

@@ -4,7 +4,7 @@
  */
 public class Project {
     
-    private short project_id;
+    private int project_id;
     private String project_name;
     private String project_start_date;
     private String project_end_date;
@@ -15,7 +15,7 @@ public class Project {
         
     }
 
-    public Project(short project_id, String project_name, String project_start_date, String project_end_date,  String project_description,int project_status) {
+    public Project(int project_id, String project_name, String project_start_date, String project_end_date,  String project_description,int project_status) {
         this.project_id = project_id;
         this.project_name = project_name;
         this.project_start_date = project_start_date;
@@ -35,9 +35,9 @@ public class Project {
 
     public void setProject_status(int project_status) { this.project_status = project_status; }
 
-    public short getProject_id() { return project_id; }
+    public int getProject_id() { return project_id; }
 
-    public void setProject_id(short project_id) { this.project_id = project_id; }
+    public void setProject_id(int project_id) { this.project_id = project_id; }
 
     public String getProject_name() { return project_name; }
 

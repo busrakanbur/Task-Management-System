@@ -13,7 +13,7 @@ public class EmployeeLoginMenuView implements ViewInterface {
 		Integer choice;
 		do {    System.out.println("\n-------------------------------- E --------------------------------");                     
                         System.out.println("1. Show all of my projects    2. Show a project   3. Project status");
-                        System.out.println("\n> Press 0 to exit..\n");
+                        System.out.println("\n> Press 0 to logout..\n");
 
 			choice = getInteger("Enter your choice : ", false);
                         System.out.println("\n-------------------------------------------------------------------");
@@ -28,7 +28,7 @@ public class EmployeeLoginMenuView implements ViewInterface {
 		case 1: operationName = "select";               break;
 		case 2: operationName = "select.gui";           break;
 		case 3: operationName = "projectStatus.gui";	break;
-		default: return new ViewData(null, null);
+		default: return new ViewData("MainMenu", null);
 		}
 		
 		return new ViewData("Employee", operationName, new HashMap<>());

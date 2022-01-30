@@ -90,8 +90,7 @@ class ProjectModel implements ModelInterface {
 		sql.append(DatabaseUtilities.prepareWhereStatement(whereParameterList));
 		//System.out.println(sql.toString());
 		
-	
-		// execute constructed SQL statement
+                // execute constructed SQL statement
 		Connection connection = DatabaseUtilities.getConnection();
 		PreparedStatement preparedStatement = connection.prepareStatement(sql.toString());
 		DatabaseUtilities.setWhereStatementParameters(preparedStatement, whereParameterList);		
