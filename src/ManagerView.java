@@ -82,9 +82,9 @@ public class ManagerView implements ViewInterface {
         Map<String, Object> getWhereParameters() throws Exception {
 		System.out.println("\nEnter the user informations..");
 		Integer user_account_id = getInteger("User Account Id : ", true);
-                //String username = getString("Username : ", true);
+                String username = getString("Username : ", true);
                 //String password = getString("Password : ", true);
-                //String email = getString("Email : ", true);
+                String email = getString("Email : ", true);
                 String first_name = getString("First Name : ", true);
                 String last_name = getString("Last Name : ", true);
                 //String is_project_manager = getString("Is Project Manager :", true);
@@ -92,9 +92,9 @@ public class ManagerView implements ViewInterface {
 		
 		Map<String, Object> whereParameters = new HashMap<>();                
 		if (user_account_id != null) whereParameters.put("user_account_id", user_account_id);
-		//if (username != null) whereParameters.put("username", username);
+		if (username != null) whereParameters.put("username", username);
 		//if (password != null) whereParameters.put("password", password);
-		//if (email != null) whereParameters.put("email", email);
+		if (email != null) whereParameters.put("email", email);
 		if (first_name != null) whereParameters.put("first_name", first_name);
 		if (last_name != null) whereParameters.put("last_name", last_name);
                 //if (is_project_manager != null) whereParameters.put("is_project_manager", is_project_manager);
@@ -140,7 +140,7 @@ public class ManagerView implements ViewInterface {
 	}
 
 	ViewData updateGUI(ModelData modelData) throws Exception {
-		System.out.println("Enter new informations");
+		System.out.println("Enter new user informations");
 		String username = getString("Username : ", true);
                 String password = getString("Password : ", true);
                 String email = getString("Email : ", true);

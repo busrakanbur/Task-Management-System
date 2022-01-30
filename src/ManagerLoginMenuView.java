@@ -32,22 +32,26 @@ public class ManagerLoginMenuView implements ViewInterface {
 		userInput.put("managerLoginMenuChoice", choice);
 		
 		switch (choice.intValue()) {
-		case 1: operationName = "select";	break;
-		case 2: operationName = "select.gui";	break;
-		case 3: operationName = "insert.gui";	break;
-		case 4: operationName = "update.gui";	break;
-		case 5: operationName = "delete.gui";	break;
-                case 6: operationName = "select";	break;
-                case 7: operationName = "select.gui";	break;
-                case 8: operationName = "insert.gui";	break;
-		case 9: operationName = "update.gui";	break;
-		case 10: operationName = "delete.gui";	break;
+		case 1: operationName = "select";                break;
+		case 2: operationName = "select.gui";            break;
+		case 3: operationName = "insert.gui";            break;
+		case 4: operationName = "update.gui";            break;
+		case 5: operationName = "delete.gui";            break;
+                case 6: operationName = "select";                       break;
+                case 7: operationName = "select.gui";                   break;
+                case 8: operationName = "insert.gui";                   break;
+		case 9: operationName = "update.gui";                   break;
+		case 10: operationName = "delete.gui";                  break;
 		case 11: operationName = "addUserToProject.gui";	break; //yeni
 		case 12: operationName = "removeUserFromProject";	break; //yeni
 		default: return new ViewData(null, null);
 		}
 		
-		return new ViewData("Manager", operationName, new HashMap<>());
+                if(choice >= 1 && choice<=5) {
+                    return new ViewData("Project", operationName, new HashMap<>());
+                }                    
+                else
+                    return new ViewData("Manager", operationName, new HashMap<>());
 	}
 
 	@Override

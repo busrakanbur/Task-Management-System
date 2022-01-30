@@ -8,7 +8,7 @@ class ProjectModel implements ModelInterface {
 		// construct SQL statement
 		StringBuilder sql = new StringBuilder();
 		sql.append(" SELECT ");
-		sql.append("	project_id, project_name, project_start_date, project_end_date, project_status ");
+		sql.append("	project_id, project_name, project_start_date, project_end_date, project_description, project_status ");
 		sql.append(" FROM dbo.Project ");
 
 		List<Map.Entry<String, Object>> whereParameterList = DatabaseUtilities.createWhereParameterList(whereParameters);		
@@ -60,13 +60,9 @@ class ProjectModel implements ModelInterface {
 				}				
 			}
 		}		
-		System.out.println(sql.toString());
-		
-		
-//                System.out.println("3 "+ rows.get(3) + "4 " + rows.get(4));
-                
-		// execute constructed SQL statement
-		if (rowCount > 0) {
+		//System.out.println(sql.toString());
+				
+                if (rowCount > 0) {
 			Connection connection = DatabaseUtilities.getConnection();
 			PreparedStatement preparedStatement = connection.prepareStatement(sql.toString());
 			rowCount = preparedStatement.executeUpdate();
@@ -130,7 +126,6 @@ class ProjectModel implements ModelInterface {
         @Override
 	public ResultSet signin(Map<String, Object> whereParameters) throws Exception { return null; }
 		
-	
-        @Override
+	@Override
 	public int signup(String fieldNames, List<Object> rows) throws Exception { return 0; }
 }

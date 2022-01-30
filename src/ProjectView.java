@@ -23,12 +23,13 @@ class ProjectView implements ViewInterface {
 		case "delete.gui": return deleteGUI(modelData);
                 
 		}		
-		return new ViewData("MainMenu", "");
+		return new ViewData("ManagerLoginMenuView", "");
 	}
 	
 	ViewData selectOperation(ModelData modelData) throws Exception {
 		ResultSet resultSet = modelData.resultSet;
-                
+                System.out.println();
+                System.out.println("Id\tName\t Start Date\tEnd Date     Status\tDescription");
                 if (resultSet != null) {
 			while (resultSet.next()) {
 				// Retrieve by column first_name
@@ -39,49 +40,51 @@ class ProjectView implements ViewInterface {
                                 String project_description = resultSet.getString("project_description");
                                 int project_status = resultSet.getInt("project_status");
                                 
+                                
 				// Display values
 				System.out.print(project_id + "\t");
 				System.out.print(project_name + "\t");
-				System.out.print(project_start_date + "\t");
-				System.out.print(project_end_date + "\t");
+				System.out.print(" " + project_start_date + "\t");
+				System.out.print(project_end_date + "   ");
+                                System.out.print(" %" + project_status + "\t");
                                 System.out.print(project_description + "\t");
-				System.out.print(project_status + "\t");
+				
 				
                                 System.out.println();
 			}
 			resultSet.close();	
 		}
 		                
-		return new ViewData("MainMenu", "");
+		return new ViewData("ManagerLoginMenu", "");
 	}
 	
 	ViewData insertOperation(ModelData modelData) throws Exception {
 		System.out.println("Number of inserted rows is " + modelData.recordCount);
 		
-		return new ViewData("MainMenu", "");
+		return new ViewData("ManagerLoginMenu", "");
 	}        
 
 	ViewData updateOperation(ModelData modelData) throws Exception {
 		System.out.println("Number of updated rows is " + modelData.recordCount);
 		
-		return new ViewData("MainMenu", "");
+		return new ViewData("ManagerLoginMenu", "");
 	}
 	
 	ViewData deleteOperation(ModelData modelData) throws Exception {
 		System.out.println("Number of deleted rows is " + modelData.recordCount);
 		
-		return new ViewData("MainMenu", "");
+		return new ViewData("ManagerLoginMenu", "");
 	}	
 	
         Map<String, Object> getWhereParameters() throws Exception {
             
-		System.out.println("Filter conditions:");
-		Integer project_id = getInteger("project_id : ", true);// short project id ama useraccount integer olduğu için aynı şekilde yapıldı
-                String project_name = getString("project_name : ", true);
-                String project_start_date = getString("project_start_date : ", true);
-                String project_end_date = getString("project_end_date : ", true);
-                String project_description = getString("project_description : ", true);
-                Integer project_status = getInteger("project_status : ", true);
+		System.out.println("\nEnter the project informations..");
+		Integer project_id = getInteger("Project Id : ", true);// short project id ama useraccount integer olduğu için aynı şekilde yapıldı
+                String project_name = getString("Project Name : ", true);
+                String project_start_date = getString("Project Start Date : ", true);
+                String project_end_date = getString("Project End Date : ", true);
+                String project_description = getString("Description : ", true);
+                Integer project_status = getInteger("Status : ", true);
 		
 		Map<String, Object> whereParameters = new HashMap<>();                
 		if (project_id != null) whereParameters.put("project_id", project_id);
@@ -111,13 +114,13 @@ class ProjectView implements ViewInterface {
                 Integer project_status;
 		do
 		{
-			System.out.println("Fields to insert:");
+			System.out.println("Add Project");
                         
-                        project_name = getString("project_name : ", true);
-                        project_start_date = getString("project_start_date : ", true);
-                        project_end_date = getString("project_end_date : ", true);
-                        project_description = getString("project_description : ", true);
-                        project_status = getInteger("project_status : ", true);                    
+                        project_name = getString("Project Name : ", true);
+                        project_start_date = getString("Project Start Date : ", true);
+                        project_end_date = getString("Project End Date : ", true);
+                        project_description = getString("Description : ", true);
+                        project_status = getInteger("Status : ", true);                    
                         
 			System.out.println();
 					
@@ -133,12 +136,12 @@ class ProjectView implements ViewInterface {
 	}
 
 	ViewData updateGUI(ModelData modelData) throws Exception {
-		System.out.println("Fields to update:");
-		String project_name = getString("project_name : ", true);
-                String project_start_date = getString("project_start_date : ", true);
-                String project_end_date = getString("project_end_date : ", true);
-                String project_description = getString("project_description : ", true);
-                Integer project_status = getInteger("project_status : ", true);
+		System.out.println("Enter new project informations");
+		String project_name = getString("Project Name : ", true);
+                String project_start_date = getString("Project Start Date : ", true);
+                String project_end_date = getString("Project End Date : ", true);
+                String project_description = getString("Description : ", true);
+                Integer project_status = getInteger("Status : ", true);
 		System.out.println();
 		
 		Map<String, Object> updateParameters = new HashMap<>();

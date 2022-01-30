@@ -8,7 +8,7 @@ public class Project {
     private String project_name;
     private String project_start_date;
     private String project_end_date;
-    private String project_description = "";
+    private String project_description;
     private int project_status;
 
 
@@ -21,7 +21,6 @@ public class Project {
         this.project_status = project_status;
     }
     public Project(String project_name, String project_start_date, String project_end_date,  String project_description,int project_status) {// bu constroctur ViewData insertGUI içindir.
-        this.project_id = project_id;
         this.project_name = project_name;
         this.project_start_date = project_start_date;
         this.project_end_date = project_end_date;
