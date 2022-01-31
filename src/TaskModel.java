@@ -14,7 +14,7 @@ class TaskModel implements ModelInterface {
 		List<Map.Entry<String, Object>> whereParameterList = DatabaseUtilities.createWhereParameterList(whereParameters);		
 		sql.append(DatabaseUtilities.prepareWhereStatement(whereParameterList));
 		
-		sql.append("ORDER BY task_id");		
+		sql.append("ORDER BY project_id, priority DESC");		
 		//System.out.println(sql.toString() + "\n");
                 
 		// execute constructed SQL statement

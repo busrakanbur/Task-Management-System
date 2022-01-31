@@ -16,13 +16,13 @@ public class EmployeeModel implements ModelInterface {
 		// construct SQL statement
 		StringBuilder sql = new StringBuilder();
 		sql.append(" SELECT ");
-		sql.append("	user_account_id, username, password, email, first_name, last_name, is_project_manager ");
-		sql.append(" FROM dbo.UserAccount ");
+		sql.append("	project_id, project_name, project_start_date, project_end_date, project_description, project_status ");
+		sql.append(" FROM dbo.Project ");
 
 		List<Map.Entry<String, Object>> whereParameterList = DatabaseUtilities.createWhereParameterList(whereParameters);		
 		sql.append(DatabaseUtilities.prepareWhereStatement(whereParameterList));
 		
-		sql.append("ORDER BY user_account_id");		
+		sql.append("ORDER BY project_id");
 		//System.out.println(sql.toString() + "\n");
 
 		

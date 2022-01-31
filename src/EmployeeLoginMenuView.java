@@ -12,7 +12,7 @@ public class EmployeeLoginMenuView implements ViewInterface {
 
 		Integer choice;
 		do {    System.out.println("\n-------------------------------- E --------------------------------");                     
-                        System.out.println("1. Show all of my projects    2. Show a project   3. Project status");
+                        System.out.println("\n1. Show all of my projects    2. Show a project   3. Project status");
                         System.out.println("\n> Press 0 to logout..\n");
 
 			choice = getInteger("Enter your choice : ", false);

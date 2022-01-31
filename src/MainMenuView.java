@@ -20,7 +20,7 @@ public class MainMenuView implements ViewInterface {
 			choice = getInteger("Enter your choice : ", false);
                         System.out.println("\n-------------------------------------------------------------------");
 		} 
-		while (choice == null || choice < 1 || choice > 9);
+		while (choice == null || choice < 1 || choice > 3);
 		
 		
 		Map<String, Object> userInput = new HashMap<>();

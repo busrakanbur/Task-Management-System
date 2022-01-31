@@ -25,55 +25,55 @@ public class EmployeeView implements ViewInterface {
 	
 	ViewData selectOperation(ModelData modelData) throws Exception {
 		ResultSet resultSet = modelData.resultSet;
-		
-		if (resultSet != null) {
+                System.out.println();
+                System.out.println("Id\tName\t Start Date\tEnd Date     Status\tDescription");
+                if (resultSet != null) {
 			while (resultSet.next()) {
 				// Retrieve by column first_name
-				short user_account_id = resultSet.getShort("user_account_id");
-                                String username = resultSet.getString("username");
-                                String password = resultSet.getString("password");
-                                String email = resultSet.getString("email");
-                                String first_name = resultSet.getString("first_name");
-                                String last_name = resultSet.getString("last_name");
-                                String is_project_manager = resultSet.getString("is_project_manager");
+				int project_id = resultSet.getInt("project_id");
+                                String project_name = resultSet.getString("project_name");
+                                String project_start_date = resultSet.getString("project_start_date");
+                                String project_end_date = resultSet.getString("project_end_date");
+                                String project_description = resultSet.getString("project_description");
+                                int project_status = resultSet.getInt("project_status");
+                                
+                                // Display values
+				System.out.print(project_id + "\t");
+				System.out.print(project_name + "\t");
+				System.out.print(" " + project_start_date + "\t");
+				System.out.print(project_end_date + "   ");
+                                System.out.print(" %" + project_status + "\t");
+                                System.out.print(project_description + "\t");
 				
-				// Display values
-				System.out.print(user_account_id + "\t");
-				System.out.print(username + "\t");
-				System.out.print(password + "\t");
-				System.out.print(email + "\t");
-                                System.out.print(first_name + "\t");
-				System.out.print(last_name + "\t");
-				System.out.print(is_project_manager + "\t");
+				
                                 System.out.println();
 			}
 			resultSet.close();	
 		}
-		
+		                
 		return new ViewData("EmployeeLoginMenu", "");
 	}
 	     
 	Map<String, Object> getWhereParameters() throws Exception {
-		System.out.println("Filter conditions:");
-		Integer user_account_id = getInteger("user_account_id : ", true);
-                String username = getString("username : ", true);
-                String password = getString("password : ", true);
-                String email = getString("email : ", true);
-                String first_name = getString("first_name : ", true);
-                String last_name = getString("last_name : ", true);
-                String is_project_manager = getString("is_project_manager :", true);
+            
+		System.out.println("\nEnter the project informations..");
+		Integer project_id = getInteger("Project Id : ", true);// short project id ama useraccount integer olduğu için aynı şekilde yapıldı
+                String project_name = getString("Project Name : ", true);
+                String project_start_date = getString("Project Start Date : ", true);
+                String project_end_date = getString("Project End Date : ", true);
+                String project_description = getString("Description : ", true);
+                Integer project_status = getInteger("Status : ", true);
 		
 		Map<String, Object> whereParameters = new HashMap<>();                
-		if (user_account_id != null) whereParameters.put("user_account_id", user_account_id);
-		if (username != null) whereParameters.put("username", username);
-		if (password != null) whereParameters.put("password", password);
-		if (email != null) whereParameters.put("email", email);
-		if (first_name != null) whereParameters.put("first_name", first_name);
-		if (last_name != null) whereParameters.put("last_name", last_name);
-                if (is_project_manager != null) whereParameters.put("is_project_manager", is_project_manager);
-                
+		if (project_id != null) whereParameters.put("project_id", project_id);
+		if (project_name != null) whereParameters.put("project_name", project_name);
+		if (project_start_date != null) whereParameters.put("project_start_date", project_start_date);
+		if (project_end_date != null) whereParameters.put("project_end_date", project_end_date);
+		if (project_description != null) whereParameters.put("project_description", project_description);
+		if (project_status != null) whereParameters.put("project_status", project_status);
+                               
 		return whereParameters;
-	}          
+	}
 	
 	ViewData selectGUI(ModelData modelData) throws Exception {
 		Map<String, Object> parameters = new HashMap<>();
