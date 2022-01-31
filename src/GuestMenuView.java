@@ -31,7 +31,7 @@ public class GuestMenuView implements ViewInterface {
 		default: return new ViewData("MainMenu", "");
 		}
 		
-		return new ViewData("Guest", operationName, new HashMap<>());
+		return new ViewData("UserAccount", operationName, new HashMap<>());
 	}
 
 	@Override

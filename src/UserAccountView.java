@@ -15,6 +15,9 @@ class UserAccountView implements ViewInterface {
 		switch(operationName) {
                     
 		case "select": return selectOperation(modelData);
+                case "signin" : return signinOperation(modelData);
+                case "signup" : return signupOperation(modelData);
+                
                 case "signin.gui": return signinGUI(modelData);
                 case "signup.gui": return signupGUI(modelData);               
 		}
@@ -24,7 +27,7 @@ class UserAccountView implements ViewInterface {
 	
 	ViewData selectOperation(ModelData modelData) throws Exception {
 		ResultSet resultSet = modelData.resultSet;
-		System.out.println("Id\tCode\t\tName\t\tUser Account Id");
+		System.out.println("Id\tCode\t\tName\t\t\tUser Account Id");
                 if (resultSet != null) {
 			while (resultSet.next()) {
 				// Retrieve by column first_name
@@ -40,6 +43,7 @@ class UserAccountView implements ViewInterface {
 				System.out.print(employee_name + "\t\t");
 				System.out.print(user_account_id + "\t");
                                 System.out.println();
+                                System.out.println("-------------------------------------------------------------------");
 			}
 			resultSet.close();	
 		}
@@ -149,7 +153,7 @@ class UserAccountView implements ViewInterface {
 		Map<String, Object> parameters = new HashMap<>();
 		parameters.put("whereParameters", getWhereParameters());
 		
-		return new ViewData("Guest", "select", parameters);
+		return new ViewData("UserAccount", "select", parameters);
 	}
 
 	ViewData insertGUI(ModelData modelData) throws Exception {

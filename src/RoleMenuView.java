@@ -12,15 +12,16 @@ public class RoleMenuView implements ViewInterface {
 
 		Integer choice;
 		do {    System.out.println("-------------------------------------------------------------------");
-                        System.out.println("\n1. Show all roles            3. Add a role");
-                        System.out.println("2. Show a spesific roles     4. Remove a role");
+                        System.out.println("\n1. Show all roles");
+                        System.out.println("2. Add a role");
+                        System.out.println("3. Remove a role");
                         
                         System.out.println("\n> press 0 to return...");
 
 			choice = getInteger("\nEnter your choice : ", false);
                        
 		} 
-		while (choice == null || choice < 0 || choice > 4); //sayıyı değiştir duruma göre
+		while (choice == null || choice < 0 || choice > 3); //sayıyı değiştir duruma göre
 		
 		
 		Map<String, Object> userInput = new HashMap<>();
@@ -28,9 +29,8 @@ public class RoleMenuView implements ViewInterface {
 		
 		switch (choice.intValue()) {
 		case 1: operationName = "select";               break;
-		case 2: operationName = "select.gui";           break;
-		case 3: operationName = "insert.gui";           break;
-		case 4: operationName = "delete.gui";           break;
+		case 2: operationName = "insert.gui";           break;
+		case 3: operationName = "delete.gui";           break;
 		default: return new ViewData("ManagerLoginMenu", "");
 		}
 		

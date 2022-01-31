@@ -30,7 +30,7 @@ public class TeamMenuView implements ViewInterface {
 		case 1: operationName = "select";               break;
 		case 2: operationName = "insert.gui";           break;
 		case 3: operationName = "delete.gui";           break;
-		default: return new ViewData("TeamMenu", "");
+		default: return new ViewData("ManagerLoginMenu", "");
 		}
 		
 		return new ViewData("Team", operationName, new HashMap<>());

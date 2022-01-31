@@ -14,9 +14,9 @@ class UserAccountModel implements ModelInterface {
 		List<Map.Entry<String, Object>> whereParameterList = DatabaseUtilities.createWhereParameterList(whereParameters);		
 		sql.append(DatabaseUtilities.prepareWhereStatement(whereParameterList));
 		
-		sql.append("ORDER BY user_account_id");		
+		sql.append("ORDER BY employee_id");		
 		//System.out.println(sql.toString() + "\n");
-		
+
 		// execute constructed SQL statement
 		Connection connection = DatabaseUtilities.getConnection();
 		PreparedStatement preparedStatement = connection.prepareStatement(sql.toString());
