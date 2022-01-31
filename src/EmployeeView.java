@@ -17,12 +17,20 @@ public class EmployeeView implements ViewInterface {
 		switch(operationName) {
                     
 		case "select": return selectOperation(modelData);
+                case "update": return updateOperation(modelData);
 		case "select.gui": return selectGUI(modelData);
+                case "update.gui": return updateGUI(modelData);
 		}
 		
 		return new ViewData("EmployeeLoginMenuView", "");
 	}
 	
+        ViewData updateOperation(ModelData modelData) throws Exception {
+		System.out.println("Number of updated rows is " + modelData.recordCount);
+		
+		return new ViewData("EmployeeLoginMenu", "");
+	}
+        
 	ViewData selectOperation(ModelData modelData) throws Exception {
 		ResultSet resultSet = modelData.resultSet;
                 System.out.println();
