@@ -16,11 +16,11 @@ public class MainMenuView implements ViewInterface {
 		do {
                         System.out.println("1. Sign In");
 			System.out.println("2. Sign Up");
-			System.out.println("3. Quit");                        
+			System.out.println("> Press 0 to exit..\n");                        
 			choice = getInteger("Enter your choice : ", false);
                         System.out.println("\n-------------------------------------------------------------------");
 		} 
-		while (choice == null || choice < 1 || choice > 3);
+		while (choice == null || choice < 0 || choice > 2);
 		
 		
 		Map<String, Object> userInput = new HashMap<>();

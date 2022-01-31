@@ -36,6 +36,9 @@ public class ModelViewControllerConsole {
         router.put("EmployeeLoginMenu", new Controller(new EmployeeLoginMenuView(), new NopModel()));
         router.put("Employee", new Controller(new EmployeeView(), new EmployeeModel()));
         
+        router.put("AssignedMenu", new Controller(new AssignedMenuView(), new NopModel()));
+        router.put("Assigned", new Controller(new AssignedView(), new AssignedModel()));
+        
         ViewData viewData = new ViewData("MainMenu", "");
         
         do {
@@ -55,7 +58,7 @@ public class ModelViewControllerConsole {
     }
 
     public static void connectToDatabase() {
-        DatabaseUtilities.host = "localhost:49670";
+        DatabaseUtilities.host = "localhost:49702";
         DatabaseUtilities.databaseName = "Project2";
 
         try {

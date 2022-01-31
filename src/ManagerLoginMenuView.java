@@ -14,12 +14,13 @@ public class ManagerLoginMenuView implements ViewInterface {
                         System.out.println("\n1. User Operations              4. Team Member Operations");
                         System.out.println("2. Project Operations           5. Team Operations");
                         System.out.println("3. Task Operations              6. Role Operations");
+                        System.out.println("                                7. Assign Operations");
                         
-                        System.out.println("\n> Press 0 to logout..\n");
+                        System.out.println("> Press 0 to logout..\n");
 
 			choice = getInteger("Enter your choice : ", false);
 		}
-		while (choice == null || choice < 0 || choice > 22); //sayıyı değiştir duruma göre
+		while (choice == null || choice < 0 || choice > 7); //sayıyı değiştir duruma göre
 		
                 switch (choice.intValue()) {
                 //project
@@ -29,7 +30,7 @@ public class ManagerLoginMenuView implements ViewInterface {
 		case 4: operationName = "";   break;
 		case 5: operationName = "";   break;
                 case 6: operationName = "";   break;
-                
+                case 7: operationName = "";   break;
                 default: return new ViewData("MainMenu", null);
 		}
 		
@@ -52,8 +53,11 @@ public class ManagerLoginMenuView implements ViewInterface {
                 else if(choice == 5) {
                     return new ViewData("TeamMenu", operationName, new HashMap<>());
                 }
-                else {
+                else if(choice == 6) {
                     return new ViewData("RoleMenu", operationName, new HashMap<>());
+                }
+                else{
+                    return new ViewData("AssignedMenu", operationName, new HashMap<>());
                 }
 		
 	}
