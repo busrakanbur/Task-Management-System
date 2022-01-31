@@ -8,13 +8,13 @@ class UserAccountModel implements ModelInterface {
 		// construct SQL statement
 		StringBuilder sql = new StringBuilder();
 		sql.append(" SELECT ");
-		sql.append("	employee_id, employee_code, employee_name, user_account_id ");
-		sql.append(" FROM dbo.Employee ");
+		sql.append("	user_account_id, username, password, email, first_name, last_name, is_project_manager ");
+		sql.append(" FROM dbo.UserAccount ");
 
 		List<Map.Entry<String, Object>> whereParameterList = DatabaseUtilities.createWhereParameterList(whereParameters);		
 		sql.append(DatabaseUtilities.prepareWhereStatement(whereParameterList));
 		
-		sql.append("ORDER BY employee_id");		
+		sql.append("ORDER BY user_account_id");		
 		//System.out.println(sql.toString() + "\n");
 
 		// execute constructed SQL statement
