@@ -11,14 +11,13 @@ public class TeamMemberMenuView implements ViewInterface {
             
 
 		Integer choice;
-		do {    
-                        System.out.println("\n1. Show all team members         3. Add team member");
-                        System.out.println("2. Show a spesific team member   4. Remove team member");
+		do {    System.out.println("-------------------------------------------------------------------");
+                        System.out.println("\n1. Show all team members           3. Add team member");
+                        System.out.println("2. Show a spesific team member     4. Remove team member");
                         
                         System.out.println("\n> press 0 to return...");
 
 			choice = getInteger("\nEnter your choice : ", false);
-                        System.out.println("\n-------------------------------------------------------------------");
 		} 
 		while (choice == null || choice < 0 || choice > 4); //sayıyı değiştir duruma göre
 		

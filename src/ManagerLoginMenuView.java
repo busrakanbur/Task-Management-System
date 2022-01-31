@@ -18,7 +18,6 @@ public class ManagerLoginMenuView implements ViewInterface {
                         System.out.println("\n> Press 0 to logout..\n");
 
 			choice = getInteger("Enter your choice : ", false);
-                        System.out.println("\n-------------------------------------------------------------------");
 		}
 		while (choice == null || choice < 0 || choice > 22); //sayıyı değiştir duruma göre
 		

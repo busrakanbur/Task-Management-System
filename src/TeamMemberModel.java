@@ -16,7 +16,7 @@ class TeamMemberModel implements ModelInterface {
                 */
 		StringBuilder sql = new StringBuilder();
 		sql.append(" SELECT ");
-		sql.append("	team_member_id, team_id, project_id, employee_id, role_id ");
+		sql.append("	team_member_id, team_id, employee_id, role_id ");
 		sql.append(" FROM dbo.TeamMember ");
 
 		List<Map.Entry<String, Object>> whereParameterList = DatabaseUtilities.createWhereParameterList(whereParameters);		

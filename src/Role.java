@@ -16,8 +16,6 @@ public class Role {
         this.role_name = role_name;
     }
 
-    
-    
     public Object getByName(String attributeName) {
         switch (attributeName) {
             case "role_id":             return role_id;

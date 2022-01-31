@@ -11,7 +11,8 @@ public class TeamMenuView implements ViewInterface {
             
 
 		Integer choice;
-		do {    System.out.println("\n1. Show all teams");
+		do {    System.out.println("-------------------------------------------------------------------");
+                        System.out.println("\n1. Show all teams");
                         System.out.println("2. Add team");
                         System.out.println("3. Remove team");
                         System.out.println("\n> Press 0 to return...");

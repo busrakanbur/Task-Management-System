@@ -11,7 +11,7 @@ public class TaskMenuView implements ViewInterface {
             
 
 		Integer choice;
-		do {    
+		do {    System.out.println("-------------------------------------------------------------------");
                         System.out.println("1. Show all tasks           4. Update task");
                         System.out.println("2. Show a spesific task     5. Delete task");
                         System.out.println("3. Add task");

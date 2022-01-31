@@ -11,7 +11,7 @@ public class ProjectMenuView implements ViewInterface {
             
 
 		Integer choice;
-		do {    
+		do {    System.out.println("-------------------------------------------------------------------");
                         System.out.println("\n1. Show all of the projects         4. Update project");
                         System.out.println("2. Show a spesific project          5. Delete project");
                         System.out.println("3. Add project");

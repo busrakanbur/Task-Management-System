@@ -68,7 +68,6 @@ class TeamModel implements ModelInterface {
 			preparedStatement.close();
 		}
               
-		
 		return rowCount;
 	}        
         

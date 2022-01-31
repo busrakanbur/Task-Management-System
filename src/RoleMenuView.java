@@ -11,13 +11,14 @@ public class RoleMenuView implements ViewInterface {
             
 
 		Integer choice;
-		do {    System.out.println("\n1. Show all roles            3. Add a role");
+		do {    System.out.println("-------------------------------------------------------------------");
+                        System.out.println("\n1. Show all roles            3. Add a role");
                         System.out.println("2. Show a spesific roles     4. Remove a role");
                         
                         System.out.println("\n> press 0 to return...");
 
 			choice = getInteger("\nEnter your choice : ", false);
-                        System.out.println("\n-------------------------------------------------------------------");
+                       
 		} 
 		while (choice == null || choice < 0 || choice > 4); //sayıyı değiştir duruma göre
 		

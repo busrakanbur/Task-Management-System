@@ -31,21 +31,13 @@ class TeamView implements ViewInterface {
 	ViewData selectOperation(ModelData modelData) throws Exception {
 		ResultSet resultSet = modelData.resultSet;
 		
-                System.out.println("User List");
-                
-                /*
-                private int team_id;
-                private String team_name;
-
-                */
-                
-		if (resultSet != null) {
+                System.out.println("Id\tTeam Name");
+                if (resultSet != null) {
 			while (resultSet.next()) {
 				// Retrieve by column first_name
-				short team_id = resultSet.getShort("team_id");// kendi classında int burada short
+				int team_id = resultSet.getInt("team_id");
                                 String team_name = resultSet.getString("team_name");
                                 
-				
 				// Display values
 				System.out.print(team_id + "\t");
 				System.out.print(team_name + "\t");
@@ -81,7 +73,7 @@ class TeamView implements ViewInterface {
         ViewData signupOperation(ModelData modelData) throws Exception { return null; }
         
         Map<String, Object> getWhereParameters() throws Exception {
-		System.out.println("Enter the team informations..");
+		System.out.println("\nEnter the team informations..");
 		Integer team_id = getInteger("Team Id : ", true);
                 String team_name = getString("Team Name : ", true);
 		
@@ -101,7 +93,7 @@ class TeamView implements ViewInterface {
 
 	ViewData insertGUI(ModelData modelData) throws Exception {
 		Map<String, Object> parameters = new HashMap<>();
-		parameters.put("fieldNames", "team_id, team_name");
+		parameters.put("fieldNames", "team_name");
 		List<Object> rows = new ArrayList<>();
 		
 		String team_name;

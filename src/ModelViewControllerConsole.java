@@ -31,7 +31,7 @@ public class ModelViewControllerConsole {
         router.put("Team", new Controller(new TeamView(), new TeamModel()));
         
         router.put("RoleMenu", new Controller(new RoleMenuView(), new NopModel()));
-        router.put("Role", new Controller(new RoleView(), new TeamModel()));
+        router.put("Role", new Controller(new RoleView(), new RoleModel()));
         
         router.put("EmployeeLoginMenu", new Controller(new EmployeeLoginMenuView(), new NopModel()));
         router.put("Employee", new Controller(new EmployeeView(), new EmployeeModel()));

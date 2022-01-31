@@ -30,22 +30,14 @@ class RoleView implements ViewInterface {
 	
 	ViewData selectOperation(ModelData modelData) throws Exception {
 		ResultSet resultSet = modelData.resultSet;
-		
-                System.out.println("User List");
-                
-                /*
-                private int role_id;
-                private String role_name;
-
-                */
-                
-		if (resultSet != null) {
+		System.out.println("\n-------------------------------------------------------------------");
+                System.out.println("Id\tRole Name");                
+                if (resultSet != null) {
 			while (resultSet.next()) {
 				// Retrieve by column first_name
-				short role_id = resultSet.getShort("role_id");// kendi classında int burada short
+				int role_id = resultSet.getInt("role_id");
                                 String role_name = resultSet.getString("role_name");
                                 
-				
 				// Display values
 				System.out.print(role_id + "\t");
 				System.out.print(role_name + "\t");
@@ -81,7 +73,7 @@ class RoleView implements ViewInterface {
         ViewData signupOperation(ModelData modelData) throws Exception { return null; }
         
         Map<String, Object> getWhereParameters() throws Exception {
-		System.out.println("Enter the role informations..");
+		System.out.println("\nEnter the role informations..");
 		Integer role_id = getInteger("Role Id : ", true);
                 String role_name = getString("Role Name : ", true);
 
@@ -101,7 +93,7 @@ class RoleView implements ViewInterface {
 
 	ViewData insertGUI(ModelData modelData) throws Exception {
 		Map<String, Object> parameters = new HashMap<>();
-		parameters.put("fieldNames", "role_id, role_name");
+		parameters.put("fieldNames", "role_name");
 		List<Object> rows = new ArrayList<>();
 		
 		String role_name;
@@ -132,6 +124,6 @@ class RoleView implements ViewInterface {
 
         @Override
 	public String toString() {
-		return "User Account View";
+		return "Role View";
 	}		
 }

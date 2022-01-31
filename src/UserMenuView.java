@@ -11,7 +11,7 @@ public class UserMenuView implements ViewInterface {
             
 
 		Integer choice;
-		do {    
+		do {    System.out.println("-------------------------------------------------------------------");
                         System.out.println("\n1. Show all users           4. Update user");
                         System.out.println("2. Show a spesific user     5. Delete user");
                         System.out.println("3. Add user");
