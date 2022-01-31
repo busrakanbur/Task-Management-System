@@ -1,20 +1,21 @@
 import java.sql.*;
 import java.util.*;
 
-class TaskModel implements ModelInterface {
+class RoleModel implements ModelInterface {
 	
 	@Override
 	public ResultSet select(Map<String, Object> whereParameters) throws Exception {
 		// construct SQL statement
-		StringBuilder sql = new StringBuilder();
+                
+                StringBuilder sql = new StringBuilder();
 		sql.append(" SELECT ");
-		sql.append("	task_id, task_name, project_id, priority, task_description, task_start_date, task_end_date, task_status ");
-		sql.append(" FROM dbo.Task ");
+		sql.append("	role_id, role_name ");
+		sql.append(" FROM dbo.Role ");
 
 		List<Map.Entry<String, Object>> whereParameterList = DatabaseUtilities.createWhereParameterList(whereParameters);		
 		sql.append(DatabaseUtilities.prepareWhereStatement(whereParameterList));
 		
-		sql.append("ORDER BY task_id");		
+		sql.append("ORDER BY role_id");		
 		//System.out.println(sql.toString() + "\n");
                 
 		// execute constructed SQL statement
@@ -31,23 +32,23 @@ class TaskModel implements ModelInterface {
 	{
 		// construct SQL statement
 		StringBuilder sql = new StringBuilder();
-		sql.append(" INSERT INTO dbo.Task (" + fieldNames + ") " );
+		sql.append(" INSERT INTO dbo.Role (" + fieldNames + ") " );
 		sql.append(" VALUES ");
 
 		String[] fieldList = fieldNames.split(",");
 
 		int rowCount = 0;
 		for (int i=0; i<rows.size(); i++) {
-			if (rows.get(i) instanceof Task) {
+			if (rows.get(i) instanceof Role) {
 				rowCount++;
                                 
 				
-				Task task = (Task)rows.get(i); 
+				Role role = (Role)rows.get(i); 
 	
 				sql.append("(");
 				for (int j=0; j<fieldList.length; j++) {
 					String fieldName = fieldList[j].trim();
-					sql.append(DatabaseUtilities.formatField(task.getByName(fieldName)));
+					sql.append(DatabaseUtilities.formatField(role.getByName(fieldName)));
 					if (j < fieldList.length - 1) {
 						sql.append(", ");
 					}
@@ -77,7 +78,7 @@ class TaskModel implements ModelInterface {
 	{
 		// construct SQL statement
 		StringBuilder sql = new StringBuilder();
-		sql.append(" UPDATE dbo.Task SET ");
+		sql.append(" UPDATE dbo.Role SET ");
 		int appendCount = 0;
 		for (Map.Entry<String, Object> entry : updateParameters.entrySet()) {
 			sql.append(entry.getKey() + " = " + DatabaseUtilities.formatField(entry.getValue()));
@@ -89,7 +90,8 @@ class TaskModel implements ModelInterface {
 		sql.append(DatabaseUtilities.prepareWhereStatement(whereParameterList));
 		//System.out.println(sql.toString());
 		
-                // execute constructed SQL statement
+	
+		// execute constructed SQL statement
 		Connection connection = DatabaseUtilities.getConnection();
 		PreparedStatement preparedStatement = connection.prepareStatement(sql.toString());
 		DatabaseUtilities.setWhereStatementParameters(preparedStatement, whereParameterList);		
@@ -104,13 +106,14 @@ class TaskModel implements ModelInterface {
 	{
 		// construct SQL statement
 		StringBuilder sql = new StringBuilder();
-		sql.append(" DELETE FROM dbo.Task ");
+		sql.append(" DELETE FROM dbo.Role ");
 
 		List<Map.Entry<String, Object>> whereParameterList = DatabaseUtilities.createWhereParameterList(whereParameters);		
 		sql.append(DatabaseUtilities.prepareWhereStatement(whereParameterList));
 		//System.out.println(sql.toString());
 
-                // execute constructed SQL statement
+	
+		// execute constructed SQL statement
 		Connection connection = DatabaseUtilities.getConnection();
 		PreparedStatement preparedStatement = connection.prepareStatement(sql.toString());
 		DatabaseUtilities.setWhereStatementParameters(preparedStatement, whereParameterList);		

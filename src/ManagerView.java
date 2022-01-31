@@ -28,7 +28,7 @@ public class ManagerView implements ViewInterface {
 		case "delete.gui": return deleteGUI(modelData);
 		}
 		
-		return new ViewData("ManagerLoginMenuView", "");
+		return new ViewData("UserMenuView", "");
 	}
 	
 	ViewData selectOperation(ModelData modelData) throws Exception {
@@ -58,25 +58,25 @@ public class ManagerView implements ViewInterface {
 			resultSet.close();	
 		}
 		
-		return new ViewData("ManagerLoginMenu", "");
+		return new ViewData("UserMenu", "");
 	}
 	
 	ViewData insertOperation(ModelData modelData) throws Exception {
 		System.out.println("Number of inserted rows is " + modelData.recordCount);
 		
-		return new ViewData("ManagerLoginMenu", "");
+		return new ViewData("UserMenu", "");
 	}
         
 	ViewData updateOperation(ModelData modelData) throws Exception {
 		System.out.println("Number of updated rows is " + modelData.recordCount);
 		
-		return new ViewData("ManagerLoginMenu", "");
+		return new ViewData("UserMenu", "");
 	}
 	
 	ViewData deleteOperation(ModelData modelData) throws Exception {
 		System.out.println("Number of deleted rows is " + modelData.recordCount);
 		
-		return new ViewData("ManagerLoginMenu", "");
+		return new ViewData("UserMenu", "");
 	}	
 	
         Map<String, Object> getWhereParameters() throws Exception {
@@ -106,7 +106,7 @@ public class ManagerView implements ViewInterface {
 		Map<String, Object> parameters = new HashMap<>();
 		parameters.put("whereParameters", getWhereParameters());
 		
-		return new ViewData("Manager", "select", parameters);
+		return new ViewData("User", "select", parameters);
 	}
 
 	ViewData insertGUI(ModelData modelData) throws Exception {
@@ -136,7 +136,7 @@ public class ManagerView implements ViewInterface {
                 
                 parameters.put("rows", rows);
 		
-		return new ViewData("Manager", "insert", parameters);
+		return new ViewData("User", "insert", parameters);
 	}
 
 	ViewData updateGUI(ModelData modelData) throws Exception {
@@ -158,19 +158,19 @@ public class ManagerView implements ViewInterface {
 		parameters.put("updateParameters", updateParameters);
 		parameters.put("whereParameters", getWhereParameters());
 		
-		return new ViewData("Manager", "update", parameters);
+		return new ViewData("User", "update", parameters);
 	}
         
         ViewData deleteGUI(ModelData modelData) throws Exception {
 		Map<String, Object> parameters = new HashMap<>();
 		parameters.put("whereParameters", getWhereParameters());
 		
-		return new ViewData("Manager", "delete", parameters);
+		return new ViewData("User", "delete", parameters);
 	}
         
         @Override
 	public String toString() {
-		return "Manager View";
+		return "User View";
 	}
     
 }

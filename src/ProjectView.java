@@ -23,7 +23,7 @@ class ProjectView implements ViewInterface {
 		case "delete.gui": return deleteGUI(modelData);
                 
 		}		
-		return new ViewData("ManagerLoginMenuView", "");
+		return new ViewData("ProjectMenuView", "");
 	}
 	
 	ViewData selectOperation(ModelData modelData) throws Exception {
@@ -54,25 +54,25 @@ class ProjectView implements ViewInterface {
 			resultSet.close();	
 		}
 		                
-		return new ViewData("ManagerLoginMenu", "");
+		return new ViewData("ProjectMenu", "");
 	}
 	
 	ViewData insertOperation(ModelData modelData) throws Exception {
 		System.out.println("Number of inserted rows is " + modelData.recordCount);
 		
-		return new ViewData("ManagerLoginMenu", "");
+		return new ViewData("ProjectMenu", "");
 	}        
 
 	ViewData updateOperation(ModelData modelData) throws Exception {
 		System.out.println("Number of updated rows is " + modelData.recordCount);
 		
-		return new ViewData("ManagerLoginMenu", "");
+		return new ViewData("ProjectMenu", "");
 	}
 	
 	ViewData deleteOperation(ModelData modelData) throws Exception {
 		System.out.println("Number of deleted rows is " + modelData.recordCount);
 		
-		return new ViewData("ManagerLoginMenu", "");
+		return new ViewData("ProjectMenu", "");
 	}	
 	
         Map<String, Object> getWhereParameters() throws Exception {

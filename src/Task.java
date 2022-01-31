@@ -73,6 +73,8 @@ public class Task {
             case "project_id":          return project_id;
             case "priority":            return priority;
             case "task_description":    return task_description;
+            case "task_start_date":     return task_start_date;
+            case "task_end_date":       return task_end_date;
             case "task_status":         return task_status;
             default:                    return null;
 	}

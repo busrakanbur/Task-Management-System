@@ -15,8 +15,23 @@ public class ModelViewControllerConsole {
 
         router.put("ManagerLoginMenu", new Controller(new ManagerLoginMenuView(), new NopModel()));
         router.put("Manager", new Controller(new ManagerView(), new ManagerModel()));
+        router.put("UserMenu", new Controller(new UserMenuView(), new NopModel()));
+        router.put("User", new Controller(new ManagerView(), new ManagerModel()));
+        
+        router.put("ProjectMenu", new Controller(new ProjectMenuView(), new NopModel()));
         router.put("Project", new Controller(new ProjectView(), new ProjectModel()));
+               
+        router.put("TaskMenu", new Controller(new TaskMenuView(), new NopModel()));
         router.put("Task", new Controller(new TaskView(), new TaskModel()));
+        
+        router.put("TeamMemberMenu", new Controller(new TeamMemberMenuView(), new NopModel()));
+        router.put("TeamMember", new Controller(new TeamMemberView(), new TeamMemberModel()));
+        
+        router.put("TeamMenu", new Controller(new TeamMenuView(), new NopModel()));
+        router.put("Team", new Controller(new TeamView(), new TeamModel()));
+        
+        router.put("RoleMenu", new Controller(new RoleMenuView(), new NopModel()));
+        router.put("Role", new Controller(new RoleView(), new TeamModel()));
         
         router.put("EmployeeLoginMenu", new Controller(new EmployeeLoginMenuView(), new NopModel()));
         router.put("Employee", new Controller(new EmployeeView(), new EmployeeModel()));

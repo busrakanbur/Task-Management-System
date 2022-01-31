@@ -23,7 +23,7 @@ class TaskView implements ViewInterface {
 		case "delete.gui": return deleteGUI(modelData);
                 
 		}		
-		return new ViewData("ManagerLoginMenuView", "");
+		return new ViewData("TaskMenuView", "");
 	}
 	
 	ViewData selectOperation(ModelData modelData) throws Exception {
@@ -58,45 +58,45 @@ class TaskView implements ViewInterface {
 			resultSet.close();	
 		}
 		                
-		return new ViewData("ManagerLoginMenu", "");
+		return new ViewData("TaskMenu", "");
 	}
 	
 	ViewData insertOperation(ModelData modelData) throws Exception {
 		System.out.println("Number of inserted rows is " + modelData.recordCount);
 		
-		return new ViewData("ManagerLoginMenu", "");
+		return new ViewData("TaskMenu", "");
 	}        
 
 	ViewData updateOperation(ModelData modelData) throws Exception {
 		System.out.println("Number of updated rows is " + modelData.recordCount);
 		
-		return new ViewData("ManagerLoginMenu", "");
+		return new ViewData("TaskMenu", "");
 	}
 	
 	ViewData deleteOperation(ModelData modelData) throws Exception {
 		System.out.println("Number of deleted rows is " + modelData.recordCount);
 		
-		return new ViewData("ManagerLoginMenu", "");
+		return new ViewData("TaskMenu", "");
 	}	
 	
         Map<String, Object> getWhereParameters() throws Exception {
             
 		System.out.println("\nEnter the task informations..");
-		Integer task_id = getInteger("Task Id : ", true);// short task id ama useraccount integer olduğu için aynı şekilde yapıldı
+		Integer task_id = getInteger("Task Id : ", true);
                 String task_name = getString("Task Name : ", true);
-                Integer project_id = getInteger("Project ID : ", true);
+                Integer project_id = getInteger("Project Id : ", true);
                 Integer priority = getInteger("Priority : ", true);
                 String task_description = getString("Description : ", true);
                 String task_start_date = getString("Task Start Date : ", true);
-                String task_end_date = getString("Task End Date : ", true);
-                
+                String task_end_date = getString("Task End Date : ", true);                
                 Integer task_status = getInteger("Status : ", true);
+                System.out.println();
 		
 		Map<String, Object> whereParameters = new HashMap<>();                
 		if (task_id != null) whereParameters.put("task_id", task_id);
 		if (task_name != null) whereParameters.put("task_name", task_name);
-                if (task_id != null) whereParameters.put("project_id", project_id);
-                if (task_id != null) whereParameters.put("priority", priority);
+                if (project_id != null) whereParameters.put("project_id", project_id);
+                if (priority != null) whereParameters.put("priority", priority);
 		if (task_start_date != null) whereParameters.put("task_start_date", task_start_date);
 		if (task_end_date != null) whereParameters.put("task_end_date", task_end_date);
 		if (task_description != null) whereParameters.put("task_description", task_description);
@@ -134,8 +134,8 @@ class TaskView implements ViewInterface {
                         task_status = getInteger("Status : ", true);                    
                         
 			System.out.println();
-					
-			if (task_name != null && project_id != null && priority != null && task_start_date != null && task_end_date != null && task_description != null && task_status != null) {
+                        
+                        if (task_name != null && project_id != null && priority != null && task_start_date != null && task_end_date != null && task_description != null && task_status != null) {
 				rows.add(new Task(task_name, project_id, priority, task_description, task_start_date, task_end_date, task_status));
 			}
 		}
@@ -149,7 +149,7 @@ class TaskView implements ViewInterface {
 	ViewData updateGUI(ModelData modelData) throws Exception {
 		System.out.println("Enter new task informations");
 		String task_name = getString("Task Name : ", true);
-		Integer project_id = getInteger("Project Id : ", true);
+		//Integer project_id = getInteger("Project Id : ", true);
 		Integer priority = getInteger("Priority : ", true);
                 String task_description = getString("Description : ", true);
                 String task_start_date = getString("Task Start Date : ", true);
@@ -159,7 +159,7 @@ class TaskView implements ViewInterface {
 		
 		Map<String, Object> updateParameters = new HashMap<>();
                 if (task_name != null) updateParameters.put("task_name", task_name);
-                if (project_id != null) updateParameters.put("project_id", project_id);
+                //if (project_id != null) updateParameters.put("project_id", project_id);
                 if (priority != null) updateParameters.put("priority ", priority );
 		if (task_start_date != null) updateParameters.put("task_start_date", task_start_date);
                 if (task_end_date != null) updateParameters.put("task_end_date", task_end_date);
