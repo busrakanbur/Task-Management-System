@@ -68,7 +68,7 @@ public class EmployeeView implements ViewInterface {
 	     
 	Map<String, Object> getWhereParameters() throws Exception {
             
-		System.out.println("\nEnter the task informations..");
+		System.out.println("Enter the task informations..");
 		Integer task_id = getInteger("Task Id : ", true);
                 String task_name = getString("Task Name : ", true);
                 System.out.println();

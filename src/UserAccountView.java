@@ -14,17 +14,7 @@ class UserAccountView implements ViewInterface {
 		
 		switch(operationName) {
                     
-		case "select": return selectOperation(modelData);	
-		case "insert": return insertOperation(modelData);	
-		case "update": return updateOperation(modelData);	
-		case "delete": return deleteOperation(modelData);
-                case "signin": return signinOperation(modelData);
-                case "signup": return signupOperation(modelData);
-                
-		case "select.gui": return selectGUI(modelData);
-		case "insert.gui": return insertGUI(modelData);
-		case "update.gui": return updateGUI(modelData);
-		case "delete.gui": return deleteGUI(modelData); 
+		case "select": return selectOperation(modelData);
                 case "signin.gui": return signinGUI(modelData);
                 case "signup.gui": return signupGUI(modelData);               
 		}
@@ -34,33 +24,27 @@ class UserAccountView implements ViewInterface {
 	
 	ViewData selectOperation(ModelData modelData) throws Exception {
 		ResultSet resultSet = modelData.resultSet;
-		
-                System.out.println("User List");
-                
-		if (resultSet != null) {
+		System.out.println("Id\tCode\t\tName\t\tUser Account Id");
+                if (resultSet != null) {
 			while (resultSet.next()) {
 				// Retrieve by column first_name
-				short user_account_id = resultSet.getShort("user_account_id");
-                                String username = resultSet.getString("username");
-                                String password = resultSet.getString("password");
-                                String email = resultSet.getString("email");
-                                String first_name = resultSet.getString("first_name");
-                                String last_name = resultSet.getString("last_name");
-                                String is_project_manager = resultSet.getString("is_project_manager");
+                                
+                                int employee_id = resultSet.getInt("employee_id");
+                                int employee_code = resultSet.getInt("employee_code");
+                                String employee_name = resultSet.getString("employee_name");
+                                int user_account_id = resultSet.getInt("user_account_id");
 				
 				// Display values
+				System.out.print(employee_id + "\t");
+				System.out.print(employee_code + "\t\t");
+				System.out.print(employee_name + "\t\t");
 				System.out.print(user_account_id + "\t");
-				System.out.print(username + "\t");
-				System.out.print(password + "\t");
-				System.out.print(email + "\t");
-                                System.out.print(first_name + "\t");
-				System.out.print(last_name + "\t");
-				System.out.print(is_project_manager + "\t");
                                 System.out.println();
 			}
 			resultSet.close();	
 		}
-		                
+		
+                System.out.println();
 		return new ViewData("MainMenu", "");
 	}
 	
@@ -165,7 +149,7 @@ class UserAccountView implements ViewInterface {
 		Map<String, Object> parameters = new HashMap<>();
 		parameters.put("whereParameters", getWhereParameters());
 		
-		return new ViewData("UserAccount", "select", parameters);
+		return new ViewData("Guest", "select", parameters);
 	}
 
 	ViewData insertGUI(ModelData modelData) throws Exception {
