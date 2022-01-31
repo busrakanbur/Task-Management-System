@@ -26,27 +26,31 @@ public class EmployeeView implements ViewInterface {
 	ViewData selectOperation(ModelData modelData) throws Exception {
 		ResultSet resultSet = modelData.resultSet;
                 System.out.println();
-                System.out.println("Id\tName\t Start Date\tEnd Date     Status\tDescription");
+                System.out.println("Id\tName\tProject Id   Priority\tStart Date\tEnd Date\tStatus\t  Description");
                 if (resultSet != null) {
 			while (resultSet.next()) {
 				// Retrieve by column first_name
-				int project_id = resultSet.getInt("project_id");
-                                String project_name = resultSet.getString("project_name");
-                                String project_start_date = resultSet.getString("project_start_date");
-                                String project_end_date = resultSet.getString("project_end_date");
-                                String project_description = resultSet.getString("project_description");
-                                int project_status = resultSet.getInt("project_status");
+				short task_id = resultSet.getShort("task_id");
+                                String task_name = resultSet.getString("task_name");
+                                Integer project_id = resultSet.getInt("project_id");
+                                int priority = resultSet.getInt("priority");
+                                String task_start_date = resultSet.getString("task_start_date");
+                                String task_end_date = resultSet.getString("task_end_date");
+                                String task_description = resultSet.getString("task_description");
+                                int task_status = resultSet.getInt("task_status");
                                 
-                                // Display values
-				System.out.print(project_id + "\t");
-				System.out.print(project_name + "\t");
-				System.out.print(" " + project_start_date + "\t");
-				System.out.print(project_end_date + "   ");
-                                System.out.print(" %" + project_status + "\t");
-                                System.out.print(project_description + "\t");
+                                
+				// Display values
+				System.out.print(task_id + "\t");
+				System.out.print(task_name + "\t     ");
+                                System.out.print(project_id + "\t\t ");
+                                System.out.print(priority + "\t");
+				System.out.print(task_start_date + "\t");
+				System.out.print(task_end_date + "\t ");
+                                System.out.print(" %" + task_status + "\t  ");
+                                System.out.print(task_description + "\t");
 				
-				
-                                System.out.println();
+				System.out.println();
 			}
 			resultSet.close();	
 		}
@@ -56,23 +60,31 @@ public class EmployeeView implements ViewInterface {
 	     
 	Map<String, Object> getWhereParameters() throws Exception {
             
-		System.out.println("\nEnter the project informations..");
-		Integer project_id = getInteger("Project Id : ", true);// short project id ama useraccount integer olduğu için aynı şekilde yapıldı
-                String project_name = getString("Project Name : ", true);
-                String project_start_date = getString("Project Start Date : ", true);
-                String project_end_date = getString("Project End Date : ", true);
-                String project_description = getString("Description : ", true);
-                Integer project_status = getInteger("Status : ", true);
+		System.out.println("\nEnter the task informations..");
+		Integer task_id = getInteger("Task Id : ", true);
+                String task_name = getString("Task Name : ", true);
+                System.out.println();
 		
 		Map<String, Object> whereParameters = new HashMap<>();                
-		if (project_id != null) whereParameters.put("project_id", project_id);
-		if (project_name != null) whereParameters.put("project_name", project_name);
-		if (project_start_date != null) whereParameters.put("project_start_date", project_start_date);
-		if (project_end_date != null) whereParameters.put("project_end_date", project_end_date);
-		if (project_description != null) whereParameters.put("project_description", project_description);
-		if (project_status != null) whereParameters.put("project_status", project_status);
+		if (task_id != null) whereParameters.put("task_id", task_id);
+		if (task_name != null) whereParameters.put("task_name", task_name);
                                
 		return whereParameters;
+	}
+        
+        ViewData updateGUI(ModelData modelData) throws Exception {
+		System.out.println("\nChange status of your task..");              
+                Integer task_status = getInteger("Status(%): ", true);
+		System.out.println();
+		
+		Map<String, Object> updateParameters = new HashMap<>();
+		if (task_status != null) updateParameters.put("task_status", task_status);
+		
+		Map<String, Object> parameters = new HashMap<>();
+		parameters.put("updateParameters", updateParameters);
+		parameters.put("whereParameters", getWhereParameters());
+		
+		return new ViewData("Employee", "update", parameters);
 	}
 	
 	ViewData selectGUI(ModelData modelData) throws Exception {
