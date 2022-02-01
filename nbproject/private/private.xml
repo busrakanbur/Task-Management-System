@@ -2,6 +2,18 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/agiri/Documents/GitHub/tms3/src/ViewInterface.java</file>
+            <file>file:/C:/Users/agiri/Documents/GitHub/tms3/src/Controller.java</file>
+            <file>file:/C:/Users/agiri/Documents/GitHub/tms3/src/ManagerView.java</file>
+            <file>file:/C:/Users/agiri/Documents/GitHub/tms3/src/Task.java</file>
+            <file>file:/C:/Users/agiri/Documents/GitHub/tms3/src/ModelInterface.java</file>
+            <file>file:/C:/Users/agiri/Documents/GitHub/tms3/src/ModelViewControllerConsole.java</file>
+            <file>file:/C:/Users/agiri/Documents/GitHub/tms3/src/Team.java</file>
+            <file>file:/C:/Users/agiri/Documents/GitHub/tms3/src/MainMenuView.java</file>
+            <file>file:/C:/Users/agiri/Documents/GitHub/tms3/src/ProjectModel.java</file>
+            <file>file:/C:/Users/agiri/Documents/GitHub/tms3/src/TeamView.java</file>
+            <file>file:/C:/Users/agiri/Documents/GitHub/tms3/src/ManagerLoginMenuView.java</file>
+        </group>
     </open-files>
 </project-private>

@@ -42,7 +42,7 @@ public class ModelViewControllerConsole {
         router.put("GuestMenu", new Controller(new GuestMenuView(), new NopModel()));
         
         ViewData viewData = new ViewData("MainMenu", "");
-        
+        //System.out.println("ali g");
         do {
             // Model, View, and Controller
             Controller controller = router.get(viewData.functionName);
@@ -60,7 +60,7 @@ public class ModelViewControllerConsole {
     }
 
     public static void connectToDatabase() {
-        DatabaseUtilities.host = "localhost:49670";
+        DatabaseUtilities.host = "localhost:49694";
         DatabaseUtilities.databaseName = "Project2";
 
         try {
